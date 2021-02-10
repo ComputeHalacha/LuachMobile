@@ -1,0 +1,21 @@
+Luach is a full featured women's "Halachic" calendar application.
+
+It helps a Jewish wife or Kallah keep track of all the dates that need to be observed for the laws of <em>Niddah</em>.
+
+Luach does a full Halachic analysis of all the information, and is able to automatically calculate:<ul><li>When a <em>Hefsek Tahara</em> can be done</li><li>Which is the correct <em>Mikvah</em> night</li><li>Which are the days that need to be observed with <em>Harchaka</em> restrictions</li><li>Find any possible patterns ("<em>Vesset Kavuah</em>")</li></ul>
+
+Many Halachic opinions are accommodated, and all the Halachic specifications that Luach uses for its calculations can be fully customized.
+
+Luach also functions as a Zmanim calendar, and includes a full set of daily <em>Zmanim</em> for anywhere in the world. This includes candle-lighting times, sedra of the week, all holidays and fasts, Zman Kriat Shma, and many, many others.
+
+It also includes an event and occasion manager to keep track of birthdays, <em>Yahrtzeit</em>s, special dates and appointments etc.
+
+Luach stores all its information locally on your device and does not transmit this information to anyone.
+The private information that you enter into Luach can also be protected with a PIN number. The PIN can be set from the Settings Screen.
+
+Luach comes with a built in help system which explains in detail all it's features and Halachic specifications.
+You can view Luach's comprehensive documentation online at <a href="https://www.compute.co.il/luach/app/">www.compute.co.il/luach/app/</a>.
+
+We would GREATLY appreciate feedback about any issues you encounter or about how you feel that we can improve Luach.
+
+Luach's source code is open source, and can be accessed at <a href="https://github.com/cbsom/LuachAndroid">https://github.com/cbsom/LuachAndroid</a>.

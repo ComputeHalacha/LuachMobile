@@ -1,0 +1,302 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>Entries | Luach App | Instructions</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=yes">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <a name="top"></a>
+    <div class="divCaption">
+        <div class="container">
+            <a href="index.html" class="icon icon-home goHome visible-xs"></a>
+            <h2 class="icon-remove-red-eye"> Entries</h2>
+            <ul class="nav nav-tabs hidden-xs" id="ulNavLinks">
+                <li role="presentation"><a href="index.html" class="icon icon-home"> Home</a></li>
+                <li role="presentation"><a href="MainScreen.html"><img src="Images/scroll.png" style="width:10px;" /> Main Screen</a></li>
+                <li role="presentation"><a href="MonthView.html" class="icon icon-calendar"> Month View</a></li>
+                <li role="presentation" class="active"><a href="Entries.html" class="icon icon-remove-red-eye"> Entries</a></li>
+                <li role="presentation"><a href="Kavuahs.html" class="icon icon-device-hub"> Kavuahs</a></li>
+                <li role="presentation"><a href="FlaggedDates.html" class="icon icon-flag"> Flagged Date</a></li>
+                <li role="presentation" class="hidden-sm"><a href="Events.html" class="icon icon-event"> Events</a></li>
+                <li role="presentation"><a href="Settings.html" class="icon icon-settings"> Settings</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <p>In Luach, an <em>Entry</em> is a euphemism for a period. (The Halachic term for a period is a "seeing" - ראיה).</p>
+        <p>
+            Entries are the most basic piece of information that needs to be retained in order to keep a valid Halachic
+            calendar.
+        </p>
+        <p>
+            The goal of keeping track of entries is threefold:
+            <ol>
+                <li>To keep track of when a Hefsek Tahara can be done.</li>
+                <li>To calculate which days of the following month need to be observed as <a href="FlaggedDates.html">Flagged Days</a>.</li>
+                <li>To calculate <a href="Kavuahs.html">Kavuahs</a>.</li>
+            </ol>
+        </p>
+        <p>
+            Luach uses the list of Entries to automatically calculate the
+            <a href="FlaggedDates.html">Flagged Dates</a> and possible <a href="Kavuahs.html">Kavuahs</a>.
+        </p>
+        <h3>Add New Entry</h3>
+        There are two ways to add New Entries into Luachs Entry list:
+        <ol>
+            <li>
+                On <a href="MainScreen.html">The Main Screen</a> or the <a href="#MonthView">Month View Screen</a>,
+                navigate to the Jewish date for the day the period began, and press on the New Entry button.
+                <br />
+                The New Entry Screen will open, with that date selected.
+            </li>
+            <li>
+                From the main menu on the left, press on the Entries button to open the <a href="Entries.html">Entries List Screen</a>
+                and then press on the New Entry button.
+            </li>
+        </ol>
+        <h3>Entry Properties</h3>
+        The following are the properties that make up an Entry:
+        <div class="divList">
+            <strong>Jewish Date</strong>
+            <blockquote>
+                The day, month and year of the Jewish Date for the beginning of the period.
+                <break />
+                When adding a new Entry, Luach allows you to select the date by either Jewish or Secular date.
+                <br />
+                When setting an Entry date by selecting a Secular date, please keep in mind
+                that the Jewish Date changes at sunset while the Secular date does not change until midnight.
+                <br />
+                This may cause the incorrect Jewish date to be selected.
+                <br />
+                To help with this, on the New Entry Screen, Luach will show you what time sunset is for your location.
+            </blockquote>
+            <strong>Onah</strong>
+            <a name="Onahs">&nbsp;</a>
+            <blockquote>
+                Each Jewish day is divided into two "<em>Onahs</em>"; the Night <em>Onah</em> and the Day <em>Onah</em>.
+                <p>
+                    If the period began between sunset and sunrise, the Entry is considered to have occurred during the Night <em>Onah</em>.
+                    If it began between sunrise and sunset, it is considered to have occurred during the Day <em>Onah</em>.
+                </p>
+                <p>
+                    Luach is able to give you the time of sunset and sunrise for any location around the globe for any date. Make sure that you
+                    have selected your current location on the Settings Screen, and that your device has the correct
+                    time and time zone for your location.
+                </p>
+                <p>
+                    If the time of the start of the period is close to the time of sunset or sunrise (within about 15 minutes), it is strongly
+                    advisable to contact your Rav to help determine the correct date and <em>Onah</em> for that Entry.
+                </p>
+            </blockquote>
+            <strong>Haflaga</strong><a name="haflaga">&nbsp;</a>
+            <blockquote>
+                The <em>Haflaga</em> is the number of days (or partial days) between the previous Entry and this
+                one. Upon the addition of an Entry, Luach automatically works out the <em>Haflaga</em> from the previous
+                Entry.
+            </blockquote>
+        </div>
+        <h3>Non-Vesset Entries</h3>
+        <p>
+            It is very important to note that not every seeing is considered a Halachic Vesset Entry.
+            <br />
+            For example, staining and the like are usually not considered Halachic Entries even those that
+            require the Niddah restrictions.
+            <br />
+            Any seeing is not a regular monthly period, needs Rabbinic determination whether or not to record
+            it as a regular Entry.
+        </p>
+        <p>
+            <img src="Images/NewEntry_Advanced.png" style="float:right;margin:5px 0 5px 5px;" /> In Luach, when an
+            Entry is added, by default, it is assumed to be a regular period. In cases where it was determined that
+            it should not be recorded as a regular Entry, Luach has two special options that can be set for each
+            Entry.
+            <br />
+            On the New Entry Screen, just above the "Add Entry" button, press on "Show Advanced Entry Options".
+            <br />Two special advanced options will appear that can be set for this Entry:
+            <ol>
+                <li>Not a Halachic Vesset period. Should not generate Flagged Dates</li>
+                <li>Ignore this Entry in Kavuah calculations</li>
+            </ol>
+            If you have reason to believe that the current Entry should not be registered as a regular period but you do not fully understand
+            these advanced options, leave them alone for now and consult your Rabbi.
+        </p>
+        <h3>Add a Hefsek Tahara Reminder</h3>
+        <p>
+            You can elect to have Luach remind you to do a Hefsek Tahara.
+            <br />
+            You can choose how many days after the begining of the Entry the reminder should be shown.
+            <br />
+            You should choose the day that you most probably will be able to first try the Hefsek Tahara.
+            <br />
+            You also can choose what time on that day, the reminder should pop up.
+            <br />
+            By default, Luach selects one hour before sunset on the 5th day.
+        </p>
+        <p>
+            The language of this notification depends on the <a href="Settings.html#discreet">Setting</a> <em>Discreetly worded system reminders</em>.
+        </p>
+        <p>
+            If <em>Discreetly worded system reminders</em> is set,
+            the reminder will  read:
+            <br />
+            <blockquote>
+                <strong>Luach - H.T. Reminder</strong>
+                <br />
+                <em>
+                    A H.T. may be possible today before shkiah.
+                    <br />
+                    Sunset today is at 7:45 PM.
+                </em>
+            </blockquote>
+            If <em>Discreetly worded system reminders</em> is NOT set,
+            the reminder will  read:
+            <br />
+            <blockquote>
+                <strong>Luach - Hefsek Tahara Reminder</strong>
+                <br />
+                <em>
+                    A Hefsek Tahara may be possible today before shkiah.
+                    <br />
+                    Sunset today is at 7:45 PM.
+                </em>
+            </blockquote>
+        </p>
+        <h3>Entry Patterns</h3>
+        <p>
+            Whenever an Entry is added or changed, Luach looks over the list of Entries
+            to check for one of the following.
+        </p>
+        <div class="divList">
+            <strong>Vesset Kavuah</strong>
+            <blockquote>
+                A <a href="Kavuahs.html"><em>Vesset Kavuah</em></a> is a Halachic term describing when a women has multiple periods in a recurring pattern.
+                <br />
+                When a women has a set pattern, it is expected that periods will continue to occur in this pattern. This is until the pattern
+                has been proven to have "broken".
+                <br />
+                Kavuah setting and breaking is a very complex <em>Halachic</em> issue and should aways be accompanied with Rabbinic guidance.
+                <br />
+                There are many ways that recurring periods can be considered to have occurred in a pattern.
+                <br />
+                Luach automatically calculates and suggests possible Kavuhas whenever an Entry is added or updated.
+                <br />
+                If a possible Kavuah is found, Luach will show <a href="Kavuahs.html#possible"><em>The Possible Kavuah Screen</em></a>.
+                <br />
+                See  the <a href="Kavuahs.html">Kavuah documentation page</a> for more details about Kavuahs.
+            </blockquote>
+            <strong>"Broken" Kavuah Pattern</strong>
+            <blockquote>
+                The same way that a pattern of Entries sets a <a href="Kavuahs.html">Kavuah</a>, a set of Entries that does not match the Kavuah can "break" the Kavuah
+                pattern.
+                <br />
+                If there was a <a href="Kavuahs.html">Kavuah</a> pattern set previously and is still <a href="Kavuahs.html#Active">Active</a>,
+                Luach will check to see if this Entry has "broken" that Kavuahs pattern.
+                <br />
+                If there is a <a href="Kavuahs.html">Kavuah</a> found that Luach thinks may have been broken by
+                this Entry, you will be asked if you want to set that <a href="Kavuahs.html">Kavuah</a> to <em>not active</em>.
+                <br />
+                A <a href="Kavuahs.html">Kavuah</a> that is not active does not set any <a href="FlaggedDates.html">Flagged Dates</a>.
+                <br />
+                Once again, <a href="Kavuahs.html">Kavuah</a> setting and breaking is a very complex <em>Halachic</em> issue and should aways be accompanied with Rabbinic guidance.
+            </blockquote>
+            <strong>"Re-awakened" Kavuah Pattern</strong>
+            <blockquote>
+                For many <a href="Kavuahs.html">Kavuah</a> types, even if the <a href="Kavuahs.html">Kavuah</a>
+                pattern was "broken" by a set of Entries that were out of pattern,
+                they can be <em>reawakened</em> again with a single Entry that
+                matches the original pattern.
+                <br />
+                So, whenever an Entry is added or changed, Luach will check to see if this Entry matches the
+                pattern for any inactive Kavuahs.
+                <br />
+                If one is found, Luach will ask if you wish to set this <a href="Kavuahs.html">Kavuah</a> to
+                <a href="Kavuahs.html#Active">Active</a>.
+                <br />
+                Once again, <a href="Kavuahs.html">Kavuah</a> setting and breaking is a very complex <em>Halachic</em> issue and should aways be accompanied with Rabbinic guidance.
+            </blockquote>
+            <strong>"Out of Pattern" for a "Canceling" Kavuah</strong>
+            <blockquote>
+                If there is a <a href="Kavuahs.html">Kavuah</a> that is active and that is set to <a href="Kavuahs.html#CancelOnahBeinonis">Cancel Onah Beinonis</a>,
+                whenever an Entry is added or edited, Luach checks to assure that the new Entry is not "Out of Pattern".
+                <br />
+                If the new Entry does not match the pattern set by the Kavuah, Luach will ask if you wish to remove the
+                <a href="Kavuahs.html#CancelOnahBeinonis">Cancel Onah Beinonis</a> property for that Kavuah.
+            </blockquote>
+        </div>
+        <h3>The Entry List Screen</h3><a href="EntryListScreen">&nbsp;</a>
+        <p>The list of Entries that have been added can be viewed from the Entries List Screen.</p>
+        <p>
+            In the Entry List, the Entries are shown sorted to show the most recent Entries on top and the oldest ones
+            on the bottom.
+        </p>
+        <p>
+            To assist in giving a glancing overview of the Entry list trends, each Entries background color (dark or light) is set according
+            to which <a href="Entries.html#Onahs">Onah</a> it occurred in.
+            <br />
+            The icon shown by each Entry is also either a sun or a moon according to the Entries Onah.
+        </p>
+        <p>
+            Each Entry has the following option buttons:
+        </p>
+        <div class="divList">
+            <strong>Go To Date</strong>
+            <blockquote>Pressing this will take you to the Jewish calendar date when the Entry started.</blockquote>
+            <strong>Edit</strong>
+            <blockquote>
+                This will take you to the Edit Entry Screen, to change any of the Entry's properties (including the advanced ones).
+                <br />
+                This option will not be shown for an Entry that is the <em><a href="Kavuahs.html#SettingEntry">Setting Entry</a></em>                        for a Kavuah.
+            </blockquote>
+            <strong>New Kavuah</strong>
+            <blockquote>
+                This will take you to the New Kavuah screen to add a new <a href="Kavuahs.html">Kavuah</a>.
+                <br />
+                For this new Kavuah, this Entry will be used as it's <em><a href="Kavuahs.html#SettingEntry">Setting Entry</a></em>.
+            </blockquote>
+            <strong>Remove</strong>
+            <blockquote>
+                This will totally remove this Entry from the list.
+                <br />
+                Once removed, it is gone. The only way to add it again, is to add it as a New Entry.
+                <br />
+                If any <a href="Kavuahs.html">Kavuahs</a> have this Entry set as their <em><a href="Kavuahs.html#SettingEntry">Setting Entry</a></em>                        these Kavuahs will be removed as well.
+                <br />
+                Before deleting any Entries or Kavuahs, Luach will ask you to confirm the removal.
+            </blockquote>
+        </div>
+        <div class="well">
+            <strong>IMPORTANT NOTE</strong>
+            <br />
+            If you remove or change an Entry that was one of the Entries used in calculating a <a href="Kavuahs.html">Kavuah</a>                    but is NOT the final <em><a href="Kavuahs.html#SettingEntry">Setting Entry</a></em> for that Kavuah,
+            removing that Entry will not remove or change that Kavuah in Luach's Kavuah List.
+            <br />
+            It is therefore suggested whenever removing or changing an Entry, to look over the Kavuah List
+            to make sure that none of them needs to be changed, removed or added.
+        </div>
+        <h3>Export your Entry List</h3>
+        You can save your list of Entries outside of Luach by exporting the list.
+        <br />
+        To do this, press on the Export Data button which is found at the top right of the Entry List Screen.
+        <br />
+        You will shown the Export Data Screen with the Entries option selected.
+        <br />
+        On the Export Data Screen when you click the "Export to Email" button, your default email client will open up
+        in "compose" mode, with an email containing all of your Entries.
+        <br />
+        In addition, a spreadsheet containing all of your Entries will be attached to the email.
+        <br />
+        It is advisable to send the email to yourself and to keep it as a  backup of your data.
+        <break />
+        NOTE: It is not (yet) possible to IMPORT data into Luach.
+        <br />
+        If you need to restore your data, it will need to be done manually.
+    </div>
+    <div style="text-align:center;"><a href="#top">Back to Top</a></div>
+    <script src="js/code.js"></script>
+</body>
+
+</html>

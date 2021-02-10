@@ -1,0 +1,704 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <title>Settings | Luach Application | Instructions</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=yes">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <a name="top"></a>
+    <div class="divCaption">
+        <div class="container">
+            <a href="index.html" class="icon icon-home goHome visible-xs"></a>
+            <h2 class="icon-settings">Settings</h2>
+            <ul class="nav nav-tabs hidden-xs" id="ulNavLinks">
+                <li role="presentation"><a href="index.html" class="icon icon-home">Home</a></li>
+                <li role="presentation">
+                    <a href="MainScreen.html">
+                        <img src="Images/scroll.png" style="width: 10px;" />
+                        Main Screen
+                    </a>
+                </li>
+                <li role="presentation"><a href="MonthView.html" class="icon icon-calendar">Month View</a></li>
+                <li role="presentation"><a href="Entries.html" class="icon icon-remove-red-eye">Entries</a></li>
+                <li role="presentation"><a href="Kavuahs.html" class="icon icon-device-hub">Kavuahs</a></li>
+                <li role="presentation"><a href="FlaggedDates.html" class="icon icon-flag">Flagged Date</a></li>
+                <li role="presentation" class="hidden-sm"><a href="Events.html" class="icon icon-event">Events</a></li>
+                <li role="presentation" class="active"><a href="Settings.html" class="icon icon-settings">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <p>
+            There two types of Settings in Luach.
+            <ul>
+                <li><a href="#halachic">Halachic Settings</a></li>
+                <li><a href="#application">Application Settings</a></li>
+                <li><a href="#remote">Remote Backup Settings</a></li>
+                <li><a href="#reminders">Reminders and Notifications</a></li>
+                <li><a href="#privacy">Privacy &amp; Security</a></li>
+                <li><a href="#backup">Backup and Restore</a></li>
+                <li><a href="#export">Export Data</a></li>
+            </ul>
+        </p>
+        <h3>
+            Halachic Settings<a name="halachic">&nbsp;</a>
+        </h3>
+        <div class="divList">
+            <strong>Your location</strong>
+            <blockquote>
+                Luach uses your location to determine what time sunset and sunrise are at your location.
+                This is necessary in order to know what the current Jewish Date is.
+                <br />
+                It also is used to display the correct <em>Zmanim</em> on the Zmanim Screen.
+                <br />
+                If your location is in Israel, the <em>Yomim Tovim</em>, <em>Sedra</em> of the week, and Candle
+                Lighting times will be in accordance to the <em>Minhag</em> in <em>Eretz Yisroel</em>.
+                <br />
+                NOTE: Luach remembers your location - and all other settings, even when you close your phone.
+                This information is stored locally. Luach <u>does not</u> automatically send out any information whatsoever.
+                <break />
+                <strong>Editing locations</strong>
+                <br />
+                If none of the locations in the in-built list match your location, you can add or edit the locations list.
+                <br />
+                To add or remove a location from the list, from the <a href="MainScreen.html">Main Screen</a>,
+                press on the location name to open the Find Location Screen.
+                <br />
+                You will see a button on the bottom of the screen to add a new location.
+                <br />
+                When adding a new location, you will need the following information:
+                <ul>
+                    <li>The name of the location.</li>
+                    <li>The exact longitude of the location. You will need the degrees, minutes and seconds. (Google maps can help)</li>
+                    <li>The exact latitude of the location. You will need the degrees, minutes and seconds. (Google maps can help)</li>
+                    <li>The time zone offset for the location. This is the number of hours that the time zone differs from Greenwich Mean Time. For example, Jerusalem is +2 and New York is -5.</li>
+                    <li>The elevation of the location in feet. To convert from meters: feet = meters divided by 3.28084</li>
+                    <li>Candle lighting time. This is the number of minutes before sunset, this location lights candles on Friday and Erev Yom Tov.</li>
+                </ul>
+                You can also edit an existing location that is on the list.
+                <br />
+                You can do this from the Setting Screen by pressing on the pen icon to the right of the location name, or from
+                the Find Location Screen by either pressing the name of your location, or if you do a search for a location,
+                next to each location in the search results there will be a pen icon that will allow you to edit that location.
+                <br />
+                Once you are in the Edit Location Screen, you will also be able to remove that location from the list.
+            </blockquote>
+            <strong>Flag previous Onah (The "Ohr Zaruah")</strong>
+            <blockquote>
+                On <a href="FlaggedDates.html">Flagged Dates</a>, besides for the actual
+                <em><a href="Entries.html#Onahs">Onah</a></em>
+                that needs to be observed, many people also observe the previous
+                <em><a href="Entries.html#Onahs">Onah</a></em> as well.
+                <br />
+                This is in accordance with the opinion of the <em>Ohr Zarua</em>.
+                <br />
+                Note, the restrictions will usually be greatly reduced during the Onah of the
+                <em>Ohr Zarua</em>.
+                <br />
+                If you are unsure about if or how to observe the <em>Ohr Zarua</em>, please consult with your
+                Rav.
+                <br />
+                If this setting is turned on, Luach will flag the previous
+                <em><a href="Entries.html#Onahs">Onah</a></em>
+                with an indication this it is for the <em>Ohr Zarua</em>.
+                <break />
+                Due to it's widespread prevalence, this Setting is turned on by default.
+            </blockquote>
+            <strong>Keep Onah Beinonis for a full 24 Hours</strong>
+            <blockquote>
+                On the <em>Onah Beinonis</em> <a href="FlaggedDates.html">Flagged Dates</a>
+                of <em>Yom Hachodesh</em>, 30 days and 31 days,
+                there are many that do not only observe the
+                <em><a href="Entries.html#Onahs">Onah</a></em>
+                in which the period began, they observe the entire 24 hour period.
+                <br />
+                This is NOT the same as the <em>Ohr Zarua</em> - the previous Onah.
+                The <em>Ohr Zarua</em> is the <em>Onah</em>
+                that precedes the one of the Flagged date, while this opinion holds that a single
+                entire day needs to be observed, from sunset to sunset.
+                <br />
+                For example, if the Flagged Date requires observance of the Night Onah, the <em>Ohr Zarua</em> will be
+                for the Day Onah preceding it, but for this opinion, the following Day Onah will need to be observed as well,
+                as it is part of the same Jewish Date as the Night Onah.
+                <break />
+                In Luach, this setting is off by default but it is very important to note
+                that most Rabbinic authorities advise to observe this opinion.
+            </blockquote>
+            <strong>Keep day Thirty One for Onah Beinonis</strong>
+            <blockquote>
+                This Setting pertains to the <a href="FlaggedDates.html">Flagged Dates</a>
+                that are generated by each <a href="Entries.html">Entry</a> for someone
+                that does not have an active <a href="Kavuahs.html">Vesset Kavuah</a>.
+                <br />
+                The Flagged Dates that are always generated are the 30th day after the period began,
+                the <em>Yom Hachodesh</em>, and the <em>Yom Haflaga</em>.
+                <br />
+                Most Rabbinic authorities advise to also observe the thirty-first day from the start
+                of the period.
+                <break />
+                It is interesting to note that if the Jewish month in which the period occured was a full month of 30 days
+                (about half the Jewish months), it will not matter whether or not one is observing the 31st day,
+                as the 31st day will the same day as the <em>Yom Hachodesh</em>.
+                <break />
+                Due to this settings very widespread prevalence, in Luach, this setting is on by default.
+            </blockquote>
+            <strong>Haflaga is only canceled by a longer one</strong>
+            <blockquote>
+                This Setting pertains to the <a href="FlaggedDates.html">Flagged Dates</a>
+                that are generated by each <a href="Entries.html">Entry</a> for someone
+                that does not have an active <a href="Kavuahs.html">Vesset Kavuah</a>.
+                <br />
+                These Flagged Dates are: the 30th and 31st days after the period began,
+                the <em>Yom Hachodesh</em>, and the <em>Yom Haflaga</em>.
+                <br />
+                The question arises what happens when there was another <a href="Entries.html">Entry</a>
+                in the interim between the period in question and the Flagged Date.
+                <br />
+                For example, if there was an Entry on the 1st of the month with a Haflaga of 35
+                and then another one on the 20th of the month with a Haflaga of 20,
+                it is generally agreed that the following 1st of the month should be observed as the <em>Yom Hachodesh</em>.
+                <br />
+                But does the 30th, 31st and 35th days from previous Entry still get flagged?
+                <br />
+                The <em>Rem"a"</em> and the <em>T"az"</em> (and the <em>Shulchan Aruch Harav</em>) are of the opinion that the 30th, 31st and 35th days
+                from the previous Entry still are observed as the interim periods Haflaga was shorter than 30, 31 and 35.
+                <br />
+                There are many who disagree (mainly the Ba"ch and the "Sha"ch) and hold that each new period
+                cancels the Haflagas of all previous periods even if the new periods Haflaga was shorter.
+                <break />
+                It is important to note that according to the stricter opinion,
+                there can in fact be multiple periods that their <em>Haflagas</em> were never canceled by a longer <em>Haflaga</em>.
+                For example, if there were periods with the <em>Haflagas</em> of 36, 35, 33, 32,
+                the days that will need to be observed for this last period of 32 will be, 30, 31, 32, 33, 35, 36.
+                <br />
+                In the above scenario, if the following period had a <em>Haflaga</em> of 37, only 30, 31 and 37 will need to be observed
+                as all the others were canceled by the longer <em>Haflaga</em>.
+                <break />
+                In Luach, this setting is off by default.
+            </blockquote>
+            <strong>Continue incrementing Dilug Yom Hachodesh Kavuahs into another month</strong>
+            <blockquote>
+                This setting pertains to the <a href="FlaggedDates.html">Flagged Dates</a>
+                generated from <a href="Kavuahs.html">Kavuahs of Dilug Yom Hachodesh</a>.
+                <br />
+                As these types of Kavuahs add or remove days for each subsequent month,
+                they eventually reach either the end or the beginning of the month - dependent upon whether the
+                <em>Dilug</em> pattern was incrementing or decrementing days.
+                <br />
+                The question then arises, do we assume that the pattern will "spill over" into the next or the previous month?
+                <br />
+                The <em>Chazon Ish zt"l"</em> was of the opinion that once a pattern of <em>Yom Hachodesh</em>
+                reaches the end or beginning of the month, the pattern is no longer applicable and the Kavuah can be removed.
+                <br />
+                Others argue and hold that the pattern spills over into the next or previous month.
+                <break />
+                In Luach, the default goes with the opinion of the <em>Chazon Ish</em> and once the Kavuah reaches the end
+                or beginning of the month it will no longer generate any <a href="FlaggedDates.html">Flagged Dates</a>.
+            </blockquote>
+            <strong>Calculate Haflagas by counting Onahs</strong><a name="haflagaOfOnahs">&nbsp;</a>
+            <blockquote>
+                This setting determines whether or not Luach will calculate Haflagas by counting <a href="Entries.html#Onahs">Onahs</a>.
+                <br />
+                This setting is in accordance with the opinion of the <em>Shulchan Aruch Harav</em>.
+                <br />
+                Many authorities disagree with this interpretation of how to calculate Haflagas (notably, The <em>Nodah B'Yehuda</em>.)
+                <br />
+                If this setting is turned on, in addition to the regular Haflaga calculation,
+                Luach will also calculate an additional <a href="FlaggedDates.html">Flagged Date</a>
+                by counting the Onahs between a period and the one preceding it,
+                and add that number of Onahs to the period, and Flag the result as a <em>Haflaga of Onahs</em>.
+                <br />
+                In addition, Luach will suggest the <a href="Kavuahs.html">Kavuah</a> of
+                <em>Haflaga of Onahs</em> as a possible Kavuah.
+                <br />
+                This Kavuah is set by three periods in a row that started the same number of
+                <a href="Entries.html#Onahs">Onahs</a> after the period that preceded them.
+                <br />
+                This pattern is considered a Kavuah in the opinion of the <em>Shulchan Aruch Harav</em> and
+                many authorities do not consider this pattern to be a Kavuah
+                unless the <a href="Entries.html#Onahs">Onahs</a> are the same for all the Entries;
+                in which case it will be considered a Haflaga Kavuah.
+                <break />
+                This setting is turned off by default.
+            </blockquote>
+            <strong>Flag Kavuahs even if not all the same Onah</strong>
+            <blockquote>
+                This setting determines whether or not Luach will suggest a <a href="Kavuahs.html">Kavuah</a>
+                for a pattern of Entries where all the Entries did not begin in the same <a href="Entries.html#Onahs">Onah</a>.
+                <br />
+                This pattern is considered a Kavuah in the opinion of the <em>Harav Moshe Feinstein zt"l</em> and
+                many authorities do not consider this pattern to be a Kavuah.
+                <break />
+                This setting is turned off by default.
+            </blockquote>
+        </div>
+        <h3>
+            Application Settings<a name="application">&nbsp;</a>
+        </h3>
+        <div class="divList">
+            <strong>Automatically Calculate Kavuahs upon addition of an Entry</strong>
+            <blockquote>
+                Whenever a new <a href="Entries.html">Entry</a> is added or an existing is edited,
+                Luach looks over the list of Entries to see if there is a new <a href="Kavuahs.html">Kavuah</a> pattern.
+                <br />
+                Turn this setting off if you don't want Luach to do this.
+                <br />
+                You can still search for new <a href="Kavuahs.html">Kavuah</a> patterns by pressing on the
+                <em>Calculate Kavuahs</em> button from the <a href="Entries.html#EntryListScreen">Entries List Screen</a>.
+            </blockquote>
+            <strong>Number of Months ahead to warn</strong> <a name="numberMonthsAheadToWarn"></a>
+            <blockquote>
+                The number of months ahead to calculate <a href="FlaggedDates.html">Flagged Dates</a> of <a href="Kavuahs.html">Kavuahs</a>.
+                <br />
+                It is important to note that this option is not applicable for
+                the <a href="FlaggedDates.html">Flagged Dates</a> of <em>Onah Beinonis</em>
+                or those Kavuahs that rely on the interval between Entries, such as the Haflaga Kavuah.
+            </blockquote>
+            <strong>Calendar displays current</strong>
+            <blockquote>
+                This setting determines if the Jewish month or the secular month is first shown when the <a href="MonthView.html">Month View Screen</a> is opened.
+                <br />
+                In either case, you can view the other month type by pressing the button on the top left.
+            </blockquote>
+            <strong>Show explicitly ignored Kavuahs in the Kavuah list</strong>
+            <blockquote>
+                This setting pertains to <a href="Kavuahs.html#IgnoredKavuahs">Ignored Kavuahs</a>.
+                <br />
+                By default these Kavuahs are not show on the Kavuah List Screen.
+                <br />
+                Turn on this setting if you wish to view these Kavuahs.
+                <br />
+                You can also turn on this setting, by pressing on the "Show Ignored Kavuahs" button on the Kavuah List Screen.
+            </blockquote>
+            <strong>Don't show Flagged dates for a week after Entry</strong>
+            <blockquote>
+                This setting determines whether or not to show <a href="FlaggedDates.html">Flagged Dates</a> within the
+                first week after an <a href="Entries.html">Entry</a>.
+                <break />
+                The reason for hiding Flagged Dates during this time period, is to prevent clogging up the calendar with Flagged Dates
+                that are irrelevant, as this time period (and more) is
+                where the strictest of Niddah restriction apply in any case.
+                <break />
+                This setting is turned on by default.
+            </blockquote>
+            <strong>Hide Help Button</strong>
+            <blockquote>
+                In all Luach screens, there is a Help Button on the bottom left.
+                <br />
+                Pressing it brings up the Luach Help Documentation. You are probably reading this after pressing the Help Button...
+                <br />
+                If you wish to hide the Help Button, turn this setting off.
+                <br />
+                You will still be able to open the Help Documentation by pressing on the Help icon on the top of the Settings Screen.
+                <break />
+                By default, Luach does not hide the Help Button.
+            </blockquote>
+        </div>
+        <h3>Remote Backup Settings<a name="remote">&nbsp;</a></h3>        
+        <div class="divList">
+            <strong>Remote backup user name</strong>
+            <blockquote>
+                This is the user name of the remote account for backing up and restoring your information.
+                <br />
+                A user name, must contain at least 7 characters.
+                <br />
+                See <a href="#backup">Backup and Restore</a> for instructions about how to restore your data from a remote backup.
+            </blockquote>
+            <strong>Remote backup password</strong>
+            <blockquote>
+                This is password for the remote account for backing up and restoring your information.
+                <br />
+                The password must contain at least 7 characters.
+                <br />
+                See <a href="#backup">Backup and Restore</a> for instructions about how to restore your data from a remote backup.
+            </blockquote>
+            <strong>Automatically backup data when a new Entry is added</strong>
+            <blockquote>
+                This setting, is "on" by default,
+                <br />
+                When this setting is set, each time a new <a href="Entries.html">Entry</a> is added, all your data will be automatically backed up to your account on the remote Luach server.
+                <br />
+                This way you can help assure that your personal calendar will not be lost if your device is lost or becomes unusable.
+                <br />
+                When this setting is set, make sure that your remote account user name and password fields contain your account credentials.
+                <br />
+                See <a href="#backup">Backup and Restore</a> for instructions about how to restore your data from a remote backup.
+            </blockquote>
+        </div>
+        <h3>Reminders and Notifications<a name="reminders">&nbsp;</a></h3>        
+        <div class="divList">
+            <strong>
+                Remind me about the morning Bedikah during Shiva
+                Neki'im
+            </strong>
+            <blockquote>
+                Settings this to "on", will cause that when a <em>Hefesk Tahara</em> is added on the Home Screen,
+                system notification reminders to do the morning <em>Bedikah</em> will be added for each of the following 7 mornings.
+                <br />
+                You can select what time this notification pops up.
+                <break />
+                The language of this notification depends on the setting <em>Discreetly worded system reminders</em>.
+                <br />
+                If <em>Discreetly worded system reminders</em> is set,
+                the reminder will  read:
+                <br />
+                <blockquote>
+                    <strong>Luach - B. Reminder</strong>
+                    <br />
+                    <em>
+                        Today is the 1st day of the 7.
+                        <br />
+                        This is a reminder to do the morning B.
+                    </em>
+                </blockquote>
+                If <em>Discreetly worded system reminders</em> is NOT set,
+                the reminder will  read:
+                <br />
+                <blockquote>
+                    <strong>Luach - Bedikah Reminder</strong>
+                    <br />
+                    <em>
+                        Today is the 1st day of the Shiva Neki'im.
+                        <br />
+                        This is a reminder to do the morning Bedikah
+                    </em>
+                </blockquote>
+            </blockquote>
+            <strong>
+                Remind me about the afternoon Bedikah during
+                Shiva Neki'im
+            </strong>
+            <blockquote>
+                Settings this to "on", will cause that when a <em>Hefesk Tahara</em> is added on the Home Screen,
+                system notification reminders to do the afternoon <em>Bedikah</em> will be added for each of the following 7 days.
+                <br />
+                You can select how many hours before sunset this notification pops up.
+                <break />
+                The language of this notification depends on the setting <em>Discreetly worded system reminders</em>.
+                <br />
+                If <em>Discreetly worded system reminders</em> is set,
+                the reminder will  read:
+                <br />
+                <blockquote>
+                    <strong>Luach - B. Reminder</strong>
+                    <br />
+                    <em>
+                        Today is the 1st day of the 7.
+                        <br />
+                        This is a reminder to do the afternoon B.
+                        <br />
+                        Sunset is at 6:48 PM.
+                    </em>
+                </blockquote>
+                If <em>Discreetly worded system reminders</em> is NOT set,
+                the reminder will  read:
+                <br />
+                <blockquote>
+                    <strong>Luach - Bedikah Reminder</strong>
+                    <br />
+                    <em>
+                        Today is the 1st day of the Shiva Neki'im.
+                        <br />
+                        This is a reminder to do the afternoon Bedikah.
+                        <br />
+                        Sunset is at 6:48 PM.
+                    </em>
+                </blockquote>
+            </blockquote>
+            <strong>
+                Remind me about the Mikvah on the last day of
+                Shiva Neki'im
+            </strong>
+            <blockquote>
+                Settings this to "on", will cause that when a <em>Hefesk Tahara</em> is added on the Home Screen,
+                a system notification reminder about the <em>Mikvah</em> will be added for the 7th day.
+                <br />
+                You can select how many hours before sunset this notification pops up.
+                <break />
+                The language of this notification depends on the setting <em>Discreetly worded system reminders</em>.
+                <br />
+                If <em>Discreetly worded system reminders</em> is set,
+                the reminder will  read:
+                <br />
+                <blockquote>
+                    <strong>Luach - M. Reminder</strong>
+                    <br />
+                    <em>
+                        This is a reminder about the M. tonight.
+                        <br />
+                        Sunset is at 6:48 PM.
+                    </em>
+                </blockquote>
+                If <em>Discreetly worded system reminders</em> is NOT set,
+                the reminder will  read:
+                <br />
+                <blockquote>
+                    <strong>Luach - Mikvah Reminder</strong>
+                    <br />
+                    <em>
+                        This is a reminder to go to the Mikvah tonight.
+                        <br />
+                        Sunset is at 6:48 PM.
+                    </em>
+                </blockquote>
+            </blockquote>
+            <strong>
+                Remind me about Daytime flagged dates
+            </strong>
+            <blockquote>
+                Settings this to "on", will cause that whenever Luach has calculated according to your
+                <a href="Entries.html">Entries</a> and Halachic Settings that there is a
+                <a href="FlaggedDates.html">Flagged Date</a>
+                that  needs to be observed with some form of restriction during the daytime <a href="Entries.html#Onahs">Onah</a>
+                a system notification reminder will be shown before the flagged daytime <a href="Entries.html#Onahs">Onah</a>.
+                <br />
+                You can select how many hours before the sunrise this notification should pop up.
+                <break />
+                The language of this notification depends on the setting <em>Discreetly worded system reminders</em>.
+                <br />
+                If <em>Discreetly worded system reminders</em> is set,
+                the reminder will  read:
+                <br />
+                <blockquote>
+                    <strong>Luach - Daytime flagged date notification</strong>
+                    <br />
+                    <em>
+                        The daytime of the 14th of Iyyar needs to be observed.
+                        <br />
+                        Sunrise is at 5:02 AM.
+                    </em>
+                </blockquote>
+                If <em>Discreetly worded system reminders</em> is NOT set,
+                the reminder will  read:
+                <br />
+                <blockquote>
+                    <strong>Luach - Daytime flagged date notification</strong>
+                    <br />
+                    <em>The day of the the 14th of Iyyar (June 3rd 2019) is the</em>
+                    <ul>
+                        <li><em>Yom Haflagah (of 30 days)</em></li>
+                        <li><em>Yom Hachodesh</em></li>
+                    </ul>
+                    <em>Sunrise is at 5:02 AM.</em>
+                </blockquote>
+            </blockquote>
+            <strong>
+                Remind me about Nightime flagged dates
+            </strong>
+            <blockquote>
+                Settings this to "on", will cause that whenever Luach has calculated according to your
+                <a href="Entries.html">Entries</a> and Halachic Settings that there is a
+                <a href="FlaggedDates.html">Flagged Date</a>
+                that  needs to be observed with some form of restriction during the nightime <a href="Entries.html#Onahs">Onah</a>
+                a system notification reminder will be shown before the flagged nighttime <a href="Entries.html#Onahs">Onah</a>.
+                <br />
+                You can select how many hours before the sunset this notification should pop up.
+                <break />
+                The language of this notification depends on the setting <em>Discreetly worded system reminders</em>.
+                <br />
+                If <em>Discreetly worded system reminders</em> is set,
+                the reminder will  read:
+                <br />
+                <blockquote>
+                    <strong>Luach - Nighttime flagged date notification</strong>
+                    <br />
+                    <em>
+                        The nighttime of the 14th of Iyyar needs to be observed.
+                        <br />
+                        Sunset is at 7:45 PM.
+                    </em>
+                </blockquote>
+                If <em>Discreetly worded system reminders</em> is NOT set,
+                the reminder will  read:
+                <br />
+                <blockquote>
+                    <strong>Luach - Nighttime flagged date notification</strong>
+                    <br />
+                    <em>The night of the the 14th of Iyyar (June 3rd 2019) is the</em>
+                    <ul>
+                        <li><em>Ohr Zerua of the 31st day</em></li>
+                        <li><em>Ohr Zerua of the Yom Hachodesh</em></li>
+                    </ul>
+                    <em>Sunset is at 7:45 PM.</em>
+                </blockquote>
+            </blockquote>
+        </div>
+        <h3>Privacy &amp; Security<a name="privacy">&nbsp;</a></h3>        
+        <div class="divList">
+            <strong>Show Entry, Hefsek Tahara and Mikva information</strong>
+            <blockquote>
+                For a date that has an <a href="Entries.html">Entry</a>, Luach shows a red label on the <a href="MainScreen.html">Main Screen</a> with basic information about the Entry
+                and the background color on the <a href="MainScreen.html">Main Screen</a>
+                and the <a href="MonthView.html">Month View Screen</a> is light red.
+                <br />
+                The <a href="MainScreen.html">Main Screen</a> also shows the following information:
+                <ul>
+                    <li>The number of days since the last Entry</li>
+                    <li>An indication that a Hefsek Tahara may be possible on this day</li>
+                    <li>An indication that a Hefsek Tahara was done on this day</li>
+                    <li>An indication that there was a <em>Shaila</em> on this day</li>
+                    <li>An indication that going to the Mikvah may be possible after nightfall</li>
+                    <li>An indication that this was a Mikvah night</li>
+                </ul>
+                Turning this setting off will prevent Luach from showing any of the above.
+                <br />
+                The option to add a Hefsek Tahara, Shaila or Mikvah indication badge will also be hidden from each
+                day on the <a href="MainScreen.html">Main Screen</a>.
+                <break />
+                This option is given for those that wish to prevent anyone who casually opens the Luach Application on your device from
+                accessing all this very personal information at the first glance.
+                <br />
+                Turning this setting off will basically cause Luach to give the outward impression of a regular calendar app.
+                <break />
+                Note, that this will not fully prevent anyone from viewing this information by pressing any of the menu buttons on the left.
+                <br />
+                If you want to really protect your private information, set the Require PIN setting (see below).
+                <break />
+                Also note that if you chose to turn off this setting and to hide your information,
+                the information is NOT deleted.
+                <br />
+                If you turn this setting back on, all the previously entered information will show again.
+            </blockquote>
+            <strong>Show flags for problem dates on Main Screen</strong>
+            <blockquote>
+                On the <a href="MainScreen.html">Main Screen</a>, Luach shows a red flag as an indication for dates that are <a href="FlaggedDates.html">Flagged Dates</a>.
+                <br />
+                The background colors of these dates on the <a href="MainScreen.html">Main Screen</a>
+                and the <a href="MonthView.html">Month View Screen</a> is changed to yellow.
+                <br />
+                <br />
+                Set this option to off if you wish to prevent anyone who casually opens the Luach Application on your device from seeing your personal information at the first glance.
+                <br />
+                Note, that this will not fully prevent anyone from viewing this information by pressing any of the menu buttons on the left.
+                <br />
+                If you want to really protect your private information, set the Require PIN setting (see below).
+            </blockquote>
+            <strong>Discreetly worded system reminders</strong><a name="discreet">&nbsp;</a>
+            <blockquote>
+                This is for the system <em>Hefsek Tahara</em>, <em>Bedika</em> and <em>Mikva</em>  reminders that you can set up.
+                <br />
+                If this setting is set, the reminders will use discreet wording and abbreviations to mask the true intent of the reminder.
+                <br />
+                Similar to the other privacy settings, set this option to on if you wish to prevent anyone who casually opens the Luach Application on your device from seeing private information.
+                <br />
+                This setting is set to "On" by default
+            </blockquote>
+            <strong>Require PIN to open application</strong>
+            <blockquote>
+                To protect your personal information, you can require a password any time the Luach application is opened or activated.
+            </blockquote>
+            <strong>PIN Number</strong>
+            <blockquote>
+                This is the numeric password that will be required if the Require PIN to open application setting is on.
+                <br />
+                Warning, DO NOT FORGET THIS PIN NUMBER.
+                <br />
+                If you forget the PIN number, there is nothing that can be done.
+                <br />
+                You will need to un-install Luach and then re-install it again, and unless you have backed up your information, all your information will be lost.
+            </blockquote>
+        </div>
+        <h2>Backup and Restore<a name="backup">&nbsp;</a></h2>
+        <div class="divList">
+            Having all your data backed-up remotely is very helpful in case your device becomes unusable or if you want to transfer this information to another device.
+            <br />
+            By default, Luach backs up up all of your data and information on a remote server.
+            This backup occurs each time you add a new <a href="Entries.html">Entry</a> to your list.
+            <br />
+            To prevent Luach from automatically backing up your data, turn "off" the "Automatically backup data when a new Entry is added" setting.
+            <br />
+            <br />
+            When you run Luach for the first time, a new account is automatically created for you.
+            A randomly generated user name and password are created for your new account.
+            <br />
+            It is advisable to save these credentials somewhere other than your device in case of device damage or loss.
+            <br />
+            The account credentials are the way Luach identifies which data backup is yours.
+            <br />
+            You can find your account credentials on the Settings screen and on the Backup/Restore screen.
+            <br />
+            To open the Backup/Restore screen, go to the Settings screen and press on the "Backup/Restore" button - which is found at the top right of the Settings Screen.
+            <br />
+            <br />
+            On the Backup/Restore screen, you can create another new account or restore your data.
+            <br />
+            <br />
+            To create another account, simply enter a different user name and password, and press "Create an Account".
+            <br />
+            After creating an account, you can manually backup all your current local data by pressing on the "Backup my Data" button on the bottom of the screen.
+            <br />
+            Every time you open the Backup and Restore Screen, Luach automatically logs you in to your account and you are shown the date of the your last backup.
+            <br />
+            <br />
+            <strong>IMPORTANT NOTES</strong>
+            <ul>
+                <li>
+                    <em>Each account can only have a single remote backup.</em>
+                    <br />
+                    Each time you backup your data, the previous backup data is overwritten.<br />
+                    This means of course, that you can only restore the last backup that you have done.
+                    <br />
+                    If you wish to have more than a single backup, you will need to create another account by entering different credentials and pressing "Create Account".
+                    <br />
+                    You can create as many accounts as you need and each account can contain its own backup data.<br />
+                    Then to restore the data for any account, enter that accounts credentials on the Backup and Restore page, press &quot;Login to Account&quot;, and then press &quot;Backup my Data&quot;.
+                </li>
+                <li>
+                    <em>Account credentials can not be changed.</em>
+                    <br />
+                    If you wish to have different account credentials, create another account.
+                </li>
+                <li>
+                    <em>The remote account is only for backup and restore.</em>
+                    <br />
+                    Your data is never automatically synchronized between devices - even if both devices are logged in to the same remote account.
+                    <br />
+                    To move your data over to another device, you need to restore the backup from your remote account.
+                </li>
+            </ul>
+            <strong>What Data is saved in the remote Backup?</strong>
+            <ul>
+                <li>All of your settings - both Halachic settings and Application settings. (Besides for your "PIN Number", Remote User Name" and "Remote Password")</li>
+                <li>Your list of Entries</li>
+                <li>Your list of Kavuahs</li>
+                <li>Your list of "Tahara Events" such as Mikva, Shaila, and Hefsek Tahara</li>
+                <li>Your list of custom Occasions</li>
+                <li>Any custom Locations that you may have added or changed</li>
+            </ul>
+            <strong>Restoring from a saved Backup</strong>
+            <br />
+            If the account you are currently logged in to contains backup data, you will see a "Restore my Data" button on the bottom of the screen.
+            <br />
+            Press this button to import all the data contained in that backup into Luach.<br />
+            <strong>Warning</strong>: this will fully overwrite any and all data currently stored locally in Luach. This action cannot be undone.<br />
+        </div>
+        <h2>Export your Settings<a name="export">&nbsp;</a></h2>
+        <div class="divList">
+            You can save your list of Settings outside of Luach by exporting the list.
+            <br />
+            To do this, press on the Export Data button which is found at the top right of the Settings Screen.
+            <br />
+            You will shown the Export Data Screen with the Settings option selected.
+            <br />
+            On the Export Data Screen when you click the "Export to Email" button, your default email client will open up
+            in "compose" mode, with an email containing all of your Settings.
+            <br />
+            In addition, a spreadsheet containing all of your Settings will be attached to the email.
+            <br />
+            It is advisable to send the email to yourself and to keep it as a  backup of your data.
+            <break />
+            NOTE: It is not possible to IMPORT your own data into Luach.
+            <br />
+            If you need to restore your data, it will need to be done manually.
+        </div>
+    </div>
+    <div style="text-align: center;"><a href="#top">Back to Top</a></div>
+    <script src="js/code.js"></script>
+</body>
+
+</html>

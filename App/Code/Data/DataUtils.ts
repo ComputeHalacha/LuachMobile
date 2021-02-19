@@ -6,7 +6,8 @@ import {
   log,
   error,
   warn,
-  fileExists
+  fileExists,
+  getFileName
 } from '../GeneralUtils';
 import AppData from './AppData';
 import JDate from '../JCal/JDate';
@@ -25,9 +26,10 @@ import LocalStorage from './LocalStorage';
 SQLite.DEBUG(!!__DEV__);
 SQLite.enablePromise(true);
 
-export default class DataUtils {
-  static databasePath = getGlobals().DEFAULT_DB_PATH;
+const globals = getGlobals();
 
+export default class DataUtils {
+  static databasePath = globals.DEFAULT_DB_PATH;
   static allLocations: Array<Location> = [];
 
   static async getDatabasePath() {
@@ -47,7 +49,7 @@ static async getDatabaseAbsolutePath() {
     const path = await this.getDatabasePath(),
         databasePath = path && path.replace('~', '');
     return path
-        ? getGlobals().IS_ANDROID
+        ? globals.IS_ANDROID
             ? `/data/data/${getAppBundleIdAndroid()}/databases/${getFileName(
                   databasePath
               )}`
@@ -270,11 +272,11 @@ static async getDatabaseAbsolutePath() {
                     WHERE locationId=?`,
           [...params, location.locationId]
         );
-        log(`Updated Location Id ${location.locationId.toString()}`);
+        log(`Updated Location Id ${location.locationId}`);
         return loc;
       } catch (err) {
         warn(
-          `Error trying to update Location Id ${location.locationId.toString()} to the database.`
+          `Error trying to update Location Id ${location.locationId} to the database.`
         );
         error(err);
         return loc;
@@ -847,7 +849,7 @@ static async getDatabaseAbsolutePath() {
     DataUtils.assureDatabaseExists();
 
     try {
-      const database = await open({
+      const database = await SQLite.openDatabase({
         filename: DataUtils.databasePath,
         driver: sqlite3.cached.Database
       });
@@ -892,7 +894,6 @@ static async getDatabaseAbsolutePath() {
       return true;
     }
     try {
-      const globals = getGlobals();
       DataUtils.assureAppDataFolderExists();
       log(
         `${DataUtils.databasePath} was not found.
@@ -919,12 +920,11 @@ static async getDatabaseAbsolutePath() {
   }
 
   static assureAppDataFolderExists() {
-    const globals = getGlobals();
-    if (!fs.existsSync(globals.APPDATA_FOLDER)) {
+    if (!fs.existsSync(globals.APP_DATA_FOLDER)) {
       log(
-        `DataUtils.assureAppDataFolderExists(): User App data folder not found. Creating ${globals.APPDATA_FOLDER}`
+        `DataUtils.assureAppDataFolderExists(): User App data folder not found. Creating ${globals.APP_DATA_FOLDER}`
       );
-      fs.mkdir(globals.APPDATA_FOLDER, { recursive: true }, err => {
+      fs.mkdir(globals.APP_DATA_FOLDER, { recursive: true }, err => {
         if (err) {
           error(err.toString());
           throw err;
@@ -952,7 +952,7 @@ static async getDatabaseAbsolutePath() {
  * An ugly hack to get the current apps internal name on Android.
  */
 export function getAppBundleIdAndroid() {
-  if (getGlobals().IS_ANDROID) {
+  if (globals.IS_ANDROID) {
       return RNFS.DocumentDirectoryPath.replace(/.+\/(.+?)\/files/, '$1');
   }
 }

@@ -212,7 +212,7 @@ export default class RemoteBackup {
         const prevPath = localStorage.databasePath,
           // The database file is put in a folder where all os's have access
           newPath = path.join(
-            getGlobals().APPDATA_FOLDER,
+            getGlobals().APP_DATA_FOLDER,
             getNewDatabaseName()
           ),
           newDbName = getFileName(newPath);

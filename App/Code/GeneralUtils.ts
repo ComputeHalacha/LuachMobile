@@ -22,11 +22,9 @@ const GLOBALS = Object.freeze({
     BUTTON_COLOR: Platform.OS === "android" ? "#99b" : null,
     VALID_PIN: /^\d{4,}$/,
     DEFAULT_DB_PATH: "~data/luachAndroidDB.sqlite",
+    APP_DATA_FOLDER: RNFS.DocumentDirectoryPath
 });
 
-/**
- * @returns {{IS_MAC:boolean, VALID_PIN:RegExp,APPDATA_FOLDER:string,INITIAL_DB_PATH:string,DEFAULT_DB_PATH:string }}
- */
 export function getGlobals() {
     return GLOBALS;
 }

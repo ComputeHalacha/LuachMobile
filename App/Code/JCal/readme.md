@@ -1,6 +1,6 @@
 # JCal
 
-A Javascript library for Jewish date calculations
+A Typescript library for Jewish date calculations
 
 - Conversion back and forth from javascript Date objects
 - Zmanim calculations for any date and location - sunrise/sunset, chatzos, sha'a zmanis etc. for any date and location.
@@ -42,6 +42,6 @@ const { sunrise, sunset } = Zmanim.getSunTimes(
   Locations.Lakewood_NJ
 );
 
-console.log(`Sunrise: ${Utils.getTimeString(sunrise)} 
+console.log(`Sunrise: ${Utils.getTimeString(sunrise)}
              Sunset: ${Utils.getTimeString(sunset)}`);
 ```

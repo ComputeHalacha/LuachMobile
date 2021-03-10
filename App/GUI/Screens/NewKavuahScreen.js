@@ -1,11 +1,10 @@
 import React from 'react';
 import { ScrollView, View, Text, Switch, Button, Alert } from 'react-native';
-import { NavigationActions } from 'react-navigation';
 import SideMenu from '../Components/SideMenu';
 import KavuahPickers from '../Components/KavuahPickers';
 import { KavuahTypes, Kavuah } from '../../Code/Chashavshavon/Kavuah';
 import DataUtils from '../../Code/Data/DataUtils';
-import { popUpMessage, warn, error, getGlobals } from '../../Code/GeneralUtils';
+import { popUpMessage, warn, error, GLOBALS } from '../../Code/GeneralUtils';
 import { GeneralStyles } from '../styles';
 
 export default class NewKavuah extends React.Component {
@@ -17,7 +16,7 @@ export default class NewKavuah extends React.Component {
         const navigation = this.props.navigation;
         let { appData, onUpdate, settingEntry } = navigation.state.params;
         this.onUpdate = onUpdate;
-        this.dispatch = navigation.dispatch;
+        this.goBack = navigation.goBack;
         //We work with a (time descending) list of cloned entries
         //to prevent the "real" entries from becoming immutable
         this.listOfEntries = (appData.EntryList && appData.EntryList.length)
@@ -51,7 +50,7 @@ export default class NewKavuah extends React.Component {
             popUpMessage(
                 'Kavuahs can only be added after an Entry has been added!'
             );
-            this.dispatch(NavigationActions.back());
+            this.goBack();
         }
     }
     addKavuah() {
@@ -82,7 +81,7 @@ export default class NewKavuah extends React.Component {
                         if (this.onUpdate) {
                             this.onUpdate(this.appData);
                         }
-                        this.dispatch(NavigationActions.back());
+                        this.goBack();
                     })
                     .catch(err => {
                         warn(
@@ -206,7 +205,7 @@ export default class NewKavuah extends React.Component {
                                 title="Add Kavuah"
                                 onPress={this.addKavuah.bind(this)}
                                 accessibilityLabel="Add this new Kavuah"
-                                color={getGlobals().BUTTON_COLOR}
+                                color={GLOBALS.BUTTON_COLOR}
                             />
                         </View>
                     </ScrollView>

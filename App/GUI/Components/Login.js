@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Image, Modal, TextInput } from 'react-native';
-import { getGlobals } from '../../Code/GeneralUtils';
+import { GLOBALS } from '../../Code/GeneralUtils';
 
 export default class Login extends React.PureComponent {
     constructor(props) {
@@ -17,7 +17,7 @@ export default class Login extends React.PureComponent {
 
     loginTextChange(val) {
         this.setState({ enteredPIN: val });
-        if (getGlobals().VALID_PIN.test(val)) {
+        if (GLOBALS.VALID_PIN.test(val)) {
             if (val === this.props.pin) {
                 this.props.onLoggedIn();
             }
@@ -25,7 +25,7 @@ export default class Login extends React.PureComponent {
     }
 
     loginAttempt(pin) {
-        if (getGlobals().VALID_PIN.test(pin)) {
+        if (GLOBALS.VALID_PIN.test(pin)) {
             if (pin === this.props.pin) {
                 this.props.onLoggedIn();
             } else {
@@ -78,7 +78,7 @@ export default class Login extends React.PureComponent {
                                 color: '#888',
                                 fontSize: 11,
                                 paddingBottom: 10,
-                            }}>{`Version ${getGlobals().VERSION_NAME}`}</Text>
+                            }}>{`Version ${GLOBALS.VERSION_NAME}`}</Text>
                         <Text>Please enter your PIN</Text>
                         <TextInput
                             style={{

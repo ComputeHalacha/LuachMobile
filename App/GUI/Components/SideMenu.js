@@ -13,7 +13,7 @@ import { Icon } from 'react-native-elements';
 import {
     getScreenHeight,
     goHomeToday,
-    getGlobals,
+    GLOBALS,
 } from '../../Code/GeneralUtils';
 import { getTodayJdate } from '../../Code/JCal/JDateUtils';
 
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#eee',
     },
-    loadingIndicator: getGlobals().IS_ANDROID
+    loadingIndicator: GLOBALS.IS_ANDROID
         ? {
               justifyContent: 'center',
               alignItems: 'center',

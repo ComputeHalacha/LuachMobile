@@ -1,30 +1,30 @@
-import React from 'react';
-import { AppState, FlatList, View } from 'react-native';
-import { Icon } from 'react-native-elements';
-import SingleDayDisplay from '../Components/SingleDayDisplay';
-import Login from '../Components/Login';
-import Flash from '../Components/Flash';
-import FirstTimeModal from '../Components/FirstTimeModal';
-import SideMenu from '../Components/SideMenu';
+import React from "react";
+import { AppState, FlatList, View } from "react-native";
+import { Icon } from "react-native-elements";
+import SingleDayDisplay from "../Components/SingleDayDisplay";
+import Login from "../Components/Login";
+import Flash from "../Components/Flash";
+import FirstTimeModal from "../Components/FirstTimeModal";
+import SideMenu from "../Components/SideMenu";
 import {
     isLargeScreen,
     log,
     goHomeToday,
-    getGlobals,
-} from '../../Code/GeneralUtils';
-import jDate from '../../Code/JCal/jDate';
-import { getTodayJdate } from '../../Code/JCal/JDateUtils';
-import Utils from '../../Code/JCal/Utils';
-import AppData from '../../Code/Data/AppData';
-import { TaharaEventType } from '../../Code/Chashavshavon/TaharaEvent';
-import LocalStorage from '../../Code/Data/LocalStorage';
+    GLOBALS,
+} from "../../Code/GeneralUtils";
+import jDate from "../../Code/JCal/JDate";
+import { getTodayJdate } from "../../Code/JCal/JDateUtils";
+import Utils from "../../Code/JCal/Utils";
+import AppData from "../../Code/Data/AppData";
+import { TaharaEventType } from "../../Code/Chashavshavon/TaharaEvent";
+import LocalStorage from "../../Code/Data/LocalStorage";
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = ({ navigation }) =>
         //Only IOS gets the header on the today screen.
-        getGlobals().IS_IOS
+        GLOBALS.IS_IOS
             ? {
-                  title: 'Luach',
+                  title: "Luach",
                   headerRight: (
                       <Icon
                           name="calendar"
@@ -32,7 +32,7 @@ export default class HomeScreen extends React.Component {
                           color="#77c"
                           onPress={() =>
                               AppData.getAppData().then((ad) =>
-                                  navigation.navigate('MonthView', {
+                                  navigation.navigate("MonthView", {
                                       appData: ad,
                                       jdate: getTodayJdate(ad),
                                   })
@@ -41,7 +41,7 @@ export default class HomeScreen extends React.Component {
                       />
                   ),
               }
-            : { header: null };
+            : { headerShown: false };
 
     constructor(props) {
         super(props);
@@ -77,7 +77,7 @@ export default class HomeScreen extends React.Component {
         }
     }
     componentDidMount() {
-        AppState.addEventListener('change', this._handleAppStateChange);
+        AppState.addEventListener("change", this._handleAppStateChange);
 
         //Every minute, we check if the current day has changed
         this.checkToday = setInterval(() => {
@@ -105,13 +105,13 @@ export default class HomeScreen extends React.Component {
         }, 60000);
     }
     componentWillUnmount() {
-        AppState.removeEventListener('change', this._handleAppStateChange);
+        AppState.removeEventListener("change", this._handleAppStateChange);
         if (this.checkToday) {
             clearInterval(this.checkToday);
         }
         if (this.flashTimeout) {
             log(
-                '******      CLEARING TIMEOUT for showFlash             *******'
+                "******      CLEARING TIMEOUT for showFlash             *******"
             );
             clearTimeout(this.flashTimeout);
         }
@@ -124,17 +124,17 @@ export default class HomeScreen extends React.Component {
             newAppData = nextState.appData;
 
         if (!(prevAppData || newAppData)) {
-            log('REFRESHED :( - either new appdata or old appdata was nuthin`');
+            log("REFRESHED :( - either new appdata or old appdata was nuthin`");
             return true;
         }
         if (!prevAppData.Settings.isSameSettings(newAppData.Settings)) {
-            log('REFRESHED :( - Settings were not the same');
+            log("REFRESHED :( - Settings were not the same");
             return true;
         }
         if (
             prevAppData.UserOccasions.length !== newAppData.UserOccasions.length
         ) {
-            log('REFRESHED :( - User Occasions list were not the same length');
+            log("REFRESHED :( - User Occasions list were not the same length");
             return true;
         }
         if (
@@ -142,26 +142,26 @@ export default class HomeScreen extends React.Component {
                 newAppData.UserOccasions.some((uon) => uon.isSameOccasion(uo))
             )
         ) {
-            log('REFRESHED :( - Occasions were not all the same');
+            log("REFRESHED :( - Occasions were not all the same");
             return true;
         }
         if (
-            prevAppData.EntryList.list.length !==
-            newAppData.EntryList.list.length
+            prevAppData.EntryList.length !==
+            newAppData.EntryList.length
         ) {
-            log('REFRESHED :( - Entries list were not the same length');
+            log("REFRESHED :( - Entries list were not the same length");
             return true;
         }
         if (
-            !prevAppData.EntryList.list.every((e) =>
-                newAppData.EntryList.list.some((en) => en.isSameEntry(e))
+            !prevAppData.EntryList.every((e) =>
+                newAppData.EntryList.some((en) => en.isSameEntry(e))
             )
         ) {
-            log('REFRESHED :( - Entries were not all the same');
+            log("REFRESHED :( - Entries were not all the same");
             return true;
         }
         if (prevAppData.KavuahList.length !== newAppData.KavuahList.length) {
-            log('REFRESHED :( - Kavuah list were not the same length');
+            log("REFRESHED :( - Kavuah list were not the same length");
             return true;
         }
         if (
@@ -169,13 +169,13 @@ export default class HomeScreen extends React.Component {
                 newAppData.KavuahList.some((kn) => kn.isMatchingKavuah(k))
             )
         ) {
-            log('REFRESHED :( - Kavuahs were not all the same');
+            log("REFRESHED :( - Kavuahs were not all the same");
             return true;
         }
         if (
             prevAppData.ProblemOnahs.length !== newAppData.ProblemOnahs.length
         ) {
-            log('REFRESHED :( - Probs list were not the same length');
+            log("REFRESHED :( - Probs list were not the same length");
             return true;
         }
         if (
@@ -183,16 +183,16 @@ export default class HomeScreen extends React.Component {
                 newAppData.ProblemOnahs.some((pon) => pon.isSameProb(po))
             )
         ) {
-            log('REFRESHED :( - Probs were not all the same');
+            log("REFRESHED :( - Probs were not all the same");
             return true;
         }
         if (
             prevAppData.TaharaEvents.length !== newAppData.TaharaEvents.length
         ) {
-            log('REFRESHED :( - Tahara Events list were not the same length');
+            log("REFRESHED :( - Tahara Events list were not the same length");
             return true;
         }
-        log('Home Screen Refresh prevented');
+        log("Home Screen Refresh prevented");
         return false;
     }
     _handleAppStateChange(nextAppState) {
@@ -204,10 +204,10 @@ export default class HomeScreen extends React.Component {
         //If the require PIN local storage setting is on, and we are going into background mode,
         //we want to display the login modal upon re-awakening.
         if (
-            nextAppState === 'background' &&
+            nextAppState === "background" &&
             localStorage &&
             localStorage.requirePin &&
-            getGlobals().VALID_PIN.test(localStorage.PIN)
+            GLOBALS.VALID_PIN.test(localStorage.PIN)
         ) {
             //Next time the app is activated, it will ask for the PIN
             this.setState({ showLogin: true });
@@ -244,7 +244,7 @@ export default class HomeScreen extends React.Component {
     /**
      * This function is called the when the app first initially loads
      */
-    initialShowing() {
+    async initialShowing() {
         let today = new jDate(),
             daysList = this.getDaysList(today);
 
@@ -264,41 +264,40 @@ export default class HomeScreen extends React.Component {
         };
 
         //Now that the GUI is showing, we asynchronously get the "real" data from the database and local storage
-        AppData.getAppData().then((appData) => {
-            const lastRegularEntry = appData.EntryList.lastRegularEntry(),
-                lastEntry = appData.EntryList.lastEntry();
-            //As we now have a location, the current
-            //Jewish date may be different than the system date
-            (today = getTodayJdate(appData)),
-                (daysList = Utils.isSameJdate(today, this.state.daysList[0])
-                    ? this.state.daysList
-                    : this.getDaysList(today));
+        appData = await AppData.getAppData();
+        const lastRegularEntry = appData.EntryList.lastRegularEntry(),
+            lastEntry = appData.EntryList.lastEntry();
+        //As we now have a location, the current
+        //Jewish date may be different than the system date
+        (today = getTodayJdate(appData)),
+            (daysList = Utils.isSameJdate(today, this.state.daysList[0])
+                ? this.state.daysList
+                : this.getDaysList(today));
 
-            //We now will re-render the screen with the real data.
-            this.setState({
-                appData,
-                daysList,
-                today,
-                systemDate: new Date(),
-                currDate: today,
-                loadingDone: true,
-                lastEntry,
-                lastRegularEntry,
-                showFirstTimeModal: global.IsFirstRun,
-            });
-            log(`From Main: global.IsFirstRun is set to: ${global.IsFirstRun}`);
+        //We now will re-render the screen with the real data.
+        this.setState({
+            appData,
+            daysList,
+            today,
+            systemDate: new Date(),
+            currDate: today,
+            loadingDone: true,
+            lastEntry,
+            lastRegularEntry,
+            showFirstTimeModal: global.IsFirstRun,
         });
-        LocalStorage.loadAll().then((localStorage) => {
-            if (!localStorage.requirePin) {
-                this.setFlash();
-            }
-            this.setState({
-                localStorage,
-                showLogin:
-                    localStorage.requirePin &&
-                    localStorage.PIN &&
-                    getGlobals().VALID_PIN.test(localStorage.PIN),
-            });
+        log(`From Main: global.IsFirstRun is set to: ${global.IsFirstRun}`);
+
+        localStorage = await LocalStorage.loadAll();
+        if (!localStorage.requirePin) {
+            this.setFlash();
+        }
+        this.setState({
+            localStorage,
+            showLogin:
+                localStorage.requirePin &&
+                localStorage.PIN &&
+                GLOBALS.VALID_PIN.test(localStorage.PIN),
         });
     }
     /**
@@ -338,10 +337,10 @@ export default class HomeScreen extends React.Component {
      */
     setFlash() {
         if (this.state.showFlash) {
-            log('******      setting TIMEOUT for showFlash      *******');
+            log("******      setting TIMEOUT for showFlash      *******");
             this.flashTimeout = setTimeout(() => {
                 log(
-                    '******      setting showFlash to false             *******'
+                    "******      setting showFlash to false             *******"
                 );
                 this.setState({ showFlash: false });
             }, 1500);
@@ -430,7 +429,7 @@ export default class HomeScreen extends React.Component {
             />
         ) : (
             <View style={{ flex: 1 }}>
-                <View style={{ flexDirection: 'row', flex: 1 }}>
+                <View style={{ flexDirection: "row", flex: 1 }}>
                     <SideMenu
                         onUpdate={this.updateAppData}
                         appData={this.state.appData}

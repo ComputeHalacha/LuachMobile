@@ -3,7 +3,7 @@ import { View, BackHandler } from 'react-native';
 import WebView from 'react-native-webview';
 import SideMenu from '../Components/SideMenu';
 import { GeneralStyles } from '../styles';
-import { getGlobals } from '../../Code/GeneralUtils';
+import { GLOBALS } from '../../Code/GeneralUtils';
 
 export default class BrowserScreen extends PureComponent {
     static navigationOptions = ({ navigation }) => ({
@@ -53,9 +53,9 @@ export default class BrowserScreen extends PureComponent {
                         allowUniversalAccessFromFileURLs={true}
                         javaScriptEnabled={true}
                         source={{
-                            uri: getGlobals().IS_ANDROID
+                            uri: GLOBALS.IS_ANDROID
                                 ? `file:///android_asset/docs/${this.url}?v=${
-                                      getGlobals().VERSION_NAME
+                                      GLOBALS.VERSION_NAME
                                   }`
                                 : `docs/${this.url}`,
                         }}

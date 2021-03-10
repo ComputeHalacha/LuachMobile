@@ -1,8 +1,8 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 
-export class GridView extends Component {
+export class GridView extends React.Component {
     styles = StyleSheet.create({
         container: {
             flex: 1,

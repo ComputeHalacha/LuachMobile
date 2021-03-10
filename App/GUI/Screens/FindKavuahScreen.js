@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     ScrollView,
     View,
@@ -6,7 +6,6 @@ import {
     TouchableHighlight,
     Vibration,
 } from 'react-native';
-import { NavigationActions } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import SideMenu from '../Components/SideMenu';
 import DataUtils from '../../Code/Data/DataUtils';
@@ -14,14 +13,14 @@ import { Kavuah } from '../../Code/Chashavshavon/Kavuah';
 import { popUpMessage } from '../../Code/GeneralUtils';
 import { GeneralStyles } from '../styles';
 
-export default class FindKavuahScreen extends Component {
+export default class FindKavuahScreen extends React.Component {
     static navigationOptions = {
         title: 'Found Possible Kavuahs',
     };
     constructor(props) {
         super(props);
 
-        this.dispatch = this.props.navigation.dispatch;
+        this.goBack = navigation.goBack;
         this.navigate = this.props.navigation.navigate;
 
         const {
@@ -56,7 +55,7 @@ export default class FindKavuahScreen extends Component {
                 popUpMessage(
                     'The application did not find any Kavuah combinations.\nPlease remember: DO NOT RELY EXCLUSIVELY UPON THIS APPLICATION!'
                 );
-                this.dispatch(NavigationActions.back());
+                this.goBack();
             }
         }
     }

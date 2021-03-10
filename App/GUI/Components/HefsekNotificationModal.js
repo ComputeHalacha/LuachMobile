@@ -1,7 +1,6 @@
 import React from 'react';
 import { Modal, Text, View, TouchableOpacity, Button } from 'react-native';
 import { Divider, Icon } from 'react-native-elements';
-import DeviceInfo from 'react-native-device-info';
 import TimeInput from './TimeInput';
 import AddButton from './AddButton';
 import NumberPicker from '../Components/NumberPicker';
@@ -12,7 +11,7 @@ import {
     cancelAllBedikaAlarms,
     cancelMikvaAlarm,
 } from '../../Code/Notifications';
-import { getGlobals, popUpMessage } from '../../Code/GeneralUtils';
+import { GLOBALS, popUpMessage } from '../../Code/GeneralUtils';
 import Utils from '../../Code/JCal/Utils';
 import {
     isYomKippurOrTishaBav,
@@ -20,7 +19,7 @@ import {
 } from "../../Code/JCal/JDateUtils";
 import { GeneralStyles } from '../styles';
 
-const armyTime = DeviceInfo.is24Hour();
+const armyTime = GLOBALS.IS_24_HOUR_FORMAT;
 
 export default class HefsekNotificationModal extends React.Component {
     constructor(props) {
@@ -302,7 +301,7 @@ export default class HefsekNotificationModal extends React.Component {
                                         onPress={() => this.props.onClose()}
                                         title="Close"
                                         accessibilityLabel="Close this box"
-                                        color={getGlobals().BUTTON_COLOR}
+                                        color={GLOBALS.BUTTON_COLOR}
                                     />
                                 </View>
                             </View>

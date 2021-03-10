@@ -11,7 +11,7 @@ import { Icon } from 'react-native-elements';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import { getScreenWidth, goHomeToday } from '../../Code/GeneralUtils';
 import { GridView, Row, Column } from '../Components/GridView';
-import jDate from '../../Code/JCal/jDate';
+import jDate from '../../Code/JCal/JDate';
 import Utils from '../../Code/JCal/Utils';
 import Month from '../../Code/Month';
 import { NightDay } from '../../Code/Chashavshavon/Onah';

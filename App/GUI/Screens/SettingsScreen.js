@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     ScrollView,
     TouchableHighlight,
@@ -16,7 +16,7 @@ import { NightDay } from '../../Code/Chashavshavon/Onah';
 import {
     setDefault,
     isNullishOrFalse,
-    getGlobals,
+    GLOBALS,
     inform,
 } from '../../Code/GeneralUtils';
 import NumberPicker from '../Components/NumberPicker';
@@ -33,7 +33,7 @@ import {
 import { GeneralStyles } from '../styles';
 import LocalStorage from '../../Code/Data/LocalStorage';
 
-export default class SettingsScreen extends Component {
+export default class SettingsScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
         const { appData, onUpdate } = navigation.state.params;
         return {
@@ -198,7 +198,7 @@ export default class SettingsScreen extends Component {
     }
     changePIN(pin) {
         const localStorage = this.state.localStorage,
-            validPin = !pin || getGlobals().VALID_PIN.test(pin);
+            validPin = !pin || GLOBALS.VALID_PIN.test(pin);
         if (validPin) {
             localStorage.PIN = pin;
         }

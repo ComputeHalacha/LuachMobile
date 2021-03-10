@@ -1,7 +1,7 @@
 import Utils from './JCal/Utils';
 import { nowAtLocation } from './JCal/JDateUtils';
 import { NightDay } from './Chashavshavon/Onah';
-import { log, range } from './GeneralUtils';
+import { GLOBALS, log, range } from './GeneralUtils';
 
 enum NotificationEventType {
   Hefsek = 101,
@@ -161,7 +161,7 @@ export function addHefsekTaharaAlarm(jdate, time, sunset, discreet) {
     `Luach - ${hefsekText} Reminder`,
     `A  ${hefsekText} may be possible today before shkiah.\nSunset today is at ${Utils.getTimeString(
       sunset,
-      DeviceInfo.is24Hour
+      GLOBALS.IS_24_HOUR_FORMAT
     )}.`,
     sdate
   );
@@ -237,7 +237,7 @@ export function addAfternoonBedikaAlarms(
         this.discreet ? '7' : "Shiva Neki'im"
       }.\nThis is a reminder to do the afternoon ${bedikaText}.\nSunset is at ${Utils.getTimeString(
         sunset,
-        DeviceInfo.is24Hour
+        GLOBALS.IS_24_HOUR_FORMAT
       )}`,
       sdate
     );
@@ -261,7 +261,7 @@ export function addMikvaAlarm(jdate, time, sunset, discreet) {
       discreet ? 'about' : 'to go to'
     } the ${txt} tonight.\nSunset is at ${Utils.getTimeString(
       sunset,
-      DeviceInfo.is24Hour
+      GLOBALS.IS_24_HOUR_FORMAT
     )}.`,
     sdate
   );
@@ -286,7 +286,7 @@ export function resetDayOnahReminders(appData) {
     }
     const { jdate } = po,
       { sunrise } = jdate.getSunriseSunset(location),
-      sunriseString = Utils.getTimeString(sunrise, DeviceInfo.is24Hour),
+      sunriseString = Utils.getTimeString(sunrise, GLOBALS.IS_24_HOUR_FORMAT),
       sdate = jdate.getDate();
     sdate.setHours(sunrise.hour + remindDayOnahHour, sunrise.minute, 0);
     addNotification(
@@ -321,7 +321,7 @@ export function resetNightOnahReminders(appData) {
     }
     const { jdate } = po,
       { sunset } = jdate.getSunriseSunset(location),
-      sunsetString = Utils.getTimeString(sunset, DeviceInfo.is24Hour),
+      sunsetString = Utils.getTimeString(sunset, GLOBALS.IS_24_HOUR_FORMAT),
       sdate = jdate.getDate();
     sdate.setHours(sunset.hour + remindNightOnahHour, sunset.minute, 0);
     addNotification(

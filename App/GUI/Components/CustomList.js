@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FlatList, StyleSheet, Text, View, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { NightDay } from '../../Code/Chashavshavon/Onah';
@@ -28,7 +28,7 @@ import { GeneralStyles } from '../styles';
  *    keyExtractor = optional function to extract key of items.
  **********************************************************************************************************************/
 
-export default class CustomList extends Component {
+export default class CustomList extends React.Component {
     constructor(props) {
         super(props);
         this.renderItem = this.renderItem.bind(this);

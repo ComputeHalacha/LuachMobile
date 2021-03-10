@@ -21,4 +21,8 @@ target 'LuachMobile' do
   #  post_install do |installer|
   #    flipper_post_install(installer)
   #  end
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+
+  pod 'RNHourFormat', :path => '../node_modules/react-native-hour-format'
+
 end

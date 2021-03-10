@@ -11,6 +11,7 @@ import DeviceInfo from "react-native-device-info";
 import Utils from "../../Code/JCal/Utils";
 import Zmanim from "../../Code/JCal/Zmanim";
 import {
+    GLOBALS,
     popUpMessage,
     isLargeScreen,
     isNullishOrFalse,
@@ -186,7 +187,7 @@ export default class SingleDayDisplay extends React.PureComponent {
                       )
                     : [],
             entries = appData.Settings.showEntryFlagOnHome
-                ? appData.EntryList.list.filter((e) =>
+                ? appData.EntryList.filter((e) =>
                       Utils.isSameJdate(e.date, jdate)
                   )
                 : [],
@@ -223,14 +224,14 @@ export default class SingleDayDisplay extends React.PureComponent {
                 suntimesMishor && suntimesMishor.sunrise
                     ? Utils.getTimeString(
                           suntimesMishor.sunrise,
-                          DeviceInfo.is24Hour()
+                          GLOBALS.IS_24_HOUR_FORMAT
                       )
                     : "Sun does not rise",
             sunset =
                 suntimes && suntimes.sunset
                     ? Utils.getTimeString(
                           suntimes.sunset,
-                          DeviceInfo.is24Hour()
+                          GLOBALS.IS_24_HOUR_FORMAT
                       )
                     : "Sun does not set",
             candleLighting = jdate.hasCandleLighting() && (
@@ -241,7 +242,7 @@ export default class SingleDayDisplay extends React.PureComponent {
                                 suntimes,
                                 location
                             ),
-                            DeviceInfo.is24Hour()
+                            GLOBALS.IS_24_HOUR_FORMAT
                         )}
                 </Text>
             ),
@@ -270,8 +271,8 @@ export default class SingleDayDisplay extends React.PureComponent {
             hasMikvah = taharaEvents.some(
                 (te) => te.taharaEventType === TaharaEventType.Mikvah
             ),
-            isYomKippurOrTBA = isYomKippurOrTishBav(jdate),
-            isErevYomKippurOrTBA = isErevYomKippurOrTishBav(jdate);
+            isYomKippurOrTBA = isYomKippurOrTishaBav(jdate),
+            isErevYomKippurOrTBA = isErevYomKippurOrTishaBav(jdate);
         return (
             <View
                 style={[

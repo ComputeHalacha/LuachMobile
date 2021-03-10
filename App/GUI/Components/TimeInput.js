@@ -1,14 +1,14 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import DeviceInfo from 'react-native-device-info';
 import Utils from '../../Code/JCal/Utils';
 import { GeneralStyles } from '../styles';
+import { GLOBALS } from './../../Code/GeneralUtils';
 
 export default class TimeInput extends React.Component {
     constructor(props) {
         super(props);
-        this.armyTime = DeviceInfo.is24Hour();
+        this.armyTime = GLOBALS.IS_24_HOUR_FORMAT;
 
         this.state = {
             showPicker: false,

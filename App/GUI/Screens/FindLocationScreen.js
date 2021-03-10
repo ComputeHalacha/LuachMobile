@@ -10,7 +10,6 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { NavigationActions } from 'react-navigation';
 import SideMenu from '../Components/SideMenu';
 import DataUtils from '../../Code/Data/DataUtils';
 import Settings from '../../Code/Settings';
@@ -27,7 +26,7 @@ export default class FindLocation extends React.PureComponent {
         const { appData, onUpdate } = this.props.navigation.state.params;
         this.onUpdate = onUpdate;
         this.appData = appData;
-        this.dispatch = this.props.navigation.dispatch;
+        this.goBack = navigation.goBack;
         this.navigate = this.props.navigation.navigate;
         this.state = {
             list: null,
@@ -53,7 +52,7 @@ export default class FindLocation extends React.PureComponent {
                 this.onUpdate(appData);
             }
         }
-        this.dispatch(NavigationActions.back());
+        this.goBack();
     }
     editSingleLocation(location) {
         const { appData, locationWasEdited } = this;
@@ -70,7 +69,7 @@ export default class FindLocation extends React.PureComponent {
             if (this.onUpdate) {
                 this.onUpdate(appData);
             }
-            this.dispatch(NavigationActions.back());
+            this.goBack();
         } else {
             if (this.searchText) {
                 //Refresh the search - the changed location may be in the results and may have had a name change

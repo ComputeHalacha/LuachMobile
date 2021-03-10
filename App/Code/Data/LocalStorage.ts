@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { log, error, getGlobals } from "../GeneralUtils";
+import { log, error, GLOBALS } from "../GeneralUtils";
 
 const AllKeys = [
     "REQUIRE_PIN",
@@ -23,7 +23,7 @@ export default class LocalStorage {
         this._PIN = null;
         this._remoteUserName = null;
         this._remotePassword = null;
-        this._databasePath = getGlobals().DEFAULT_DB_PATH;
+        this._databasePath = GLOBALS.DB_TEMPLATE_PATH;
     }
 
     get requirePin() {
@@ -59,7 +59,7 @@ export default class LocalStorage {
     }
 
     get databasePath() {
-        return this._databasePath || getGlobals().DEFAULT_DB_PATH;
+        return this._databasePath || GLOBALS.DB_TEMPLATE_PATH;
     }
     set databasePath(val) {
         LocalStorage.setLocalStorageValue("DATABASE_PATH", val || "");
@@ -196,7 +196,7 @@ export default class LocalStorage {
             //This is the inbuilt original database
             LocalStorage.setLocalStorageValue(
                 "DATABASE_PATH",
-                getGlobals().DEFAULT_DB_PATH
+                GLOBALS.DB_TEMPLATE_PATH
             );
         }
     }

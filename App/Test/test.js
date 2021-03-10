@@ -4,7 +4,7 @@ import { ProblemOnah } from '../Code/Chashavshavon/ProblemOnah';
 import Entry from '../Code/Chashavshavon/Entry';
 import EntryList from '../Code/Chashavshavon/EntryList';
 import FlaggedDatesGenerator from '../Code/Chashavshavon/FlaggedDatesGenerator';
-import jDate from '../Code/JCal/jDate';
+import jDate from '../Code/JCal/JDate';
 import Location from '../Code/JCal/Location';
 import Settings from '../Code/Settings';
 

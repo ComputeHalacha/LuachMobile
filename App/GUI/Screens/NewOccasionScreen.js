@@ -1,6 +1,5 @@
 import React from 'react';
 import { ScrollView, View, Text, TextInput, Button, Alert, TouchableOpacity } from 'react-native';
-import { NavigationActions } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import SideMenu from '../Components/SideMenu';
@@ -8,10 +7,10 @@ import ColorChooser from '../Components/ColorChooser';
 import OccasionTypeChooser from '../Components/OccasionTypeChooser';
 import JdateChooser from '../Components/JdateChooser';
 import { UserOccasionTypes, UserOccasion } from '../../Code/JCal/UserOccasion';
-import jDate from '../../Code/JCal/jDate';
+import jDate from '../../Code/JCal/JDate';
 import Utils from '../../Code/JCal/Utils';
 import DataUtils from '../../Code/Data/DataUtils';
-import { popUpMessage, warn, error, inform, getGlobals } from '../../Code/GeneralUtils';
+import { popUpMessage, warn, error, inform, GLOBALS } from '../../Code/GeneralUtils';
 import { GeneralStyles } from '../styles';
 
 export default class NewOccasion extends React.Component {
@@ -58,7 +57,7 @@ export default class NewOccasion extends React.Component {
                                 if (onUpdate) {
                                     onUpdate(ad);
                                 }
-                                navigation.dispatch(NavigationActions.back());
+                                navigation.goBack();
                             })
                         }>
                         <View
@@ -87,7 +86,7 @@ export default class NewOccasion extends React.Component {
         const navigation = this.props.navigation;
         let { appData, onUpdate, jdate, occasion } = navigation.state.params;
         this.onUpdate = onUpdate;
-        this.dispatch = navigation.dispatch;
+        this.goBack = navigation.goBack;
         this.appData = appData;
         if (occasion) {
             this.occasion = occasion;
@@ -137,7 +136,7 @@ export default class NewOccasion extends React.Component {
                 `The occasion ${occasion.title} has been successfully added.`,
                 'Add occasion'
             );
-            this.dispatch(NavigationActions.back());
+            this.goBack();
         } catch (err) {
             warn('Error trying to add a User Occasion in the database.');
             error(err);
@@ -167,7 +166,7 @@ export default class NewOccasion extends React.Component {
                     'Edit occasion'
                 );
                 this.onUpdate(this.appData);
-                this.dispatch(NavigationActions.back());
+                this.goBack();
             })
             .catch((err) => {
                 warn('Error trying to add save the changes to User Occasion in the database.');
@@ -339,7 +338,7 @@ export default class NewOccasion extends React.Component {
                                         ? 'Save Changes to this Event'
                                         : 'Add this new Event'
                                 }
-                                color={getGlobals().BUTTON_COLOR}
+                                color={GLOBALS.BUTTON_COLOR}
                             />
                         </View>
                     </ScrollView>

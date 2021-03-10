@@ -9,10 +9,8 @@ import {
     TouchableOpacity,
     Alert,
 } from 'react-native';
-import { NavigationActions } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import DeviceInfo from 'react-native-device-info';
 import SideMenu from '../Components/SideMenu';
 import JdateChooser from '../Components/JdateChooser';
 import OnahSynopsis from '../Components/OnahSynopsis';
@@ -20,10 +18,10 @@ import TimeInput from '../Components/TimeInput';
 import Entry from '../../Code/Chashavshavon/Entry';
 import { Kavuah } from '../../Code/Chashavshavon/Kavuah';
 import Utils from '../../Code/JCal/Utils';
-import jDate from '../../Code/JCal/jDate';
+import jDate from '../../Code/JCal/JDate';
 import { NightDay, Onah } from '../../Code/Chashavshavon/Onah';
 import DataUtils from '../../Code/Data/DataUtils';
-import { warn, error, popUpMessage, getGlobals, inform } from '../../Code/GeneralUtils';
+import {GLOBALS, warn, error, popUpMessage, inform } from '../../Code/GeneralUtils';
 import { GeneralStyles } from '../styles';
 import { addHefsekTaharaAlarm } from '../../Code/Notifications';
 import NumberPicker from '../Components/NumberPicker';
@@ -42,7 +40,7 @@ export default class NewEntry extends React.Component {
                             if (onUpdate) {
                                 onUpdate(ad);
                             }
-                            navigation.dispatch(NavigationActions.back());
+                            navigation.goBack();
                         })
                     }>
                     <View
@@ -70,7 +68,7 @@ export default class NewEntry extends React.Component {
         const navigation = this.props.navigation;
 
         this.navigate = navigation.navigate;
-        this.dispatch = navigation.dispatch;
+        this.goBack = navigation.goBack;
 
         const { entry, appData, onUpdate } = navigation.state.params;
 
@@ -90,8 +88,8 @@ export default class NewEntry extends React.Component {
 
         const { sunrise, sunset } = jdate.getSunriseSunset(this.location);
 
-        this.sunriseText = sunrise ? Utils.getTimeString(sunrise, DeviceInfo.is24Hour()) : 'Never';
-        this.sunsetText = sunset ? Utils.getTimeString(sunset, DeviceInfo.is24Hour()) : 'Never';
+        this.sunriseText = sunrise ? Utils.getTimeString(sunrise, GLOBALS.IS_24_HOUR_FORMAT) : 'Never';
+        this.sunsetText = sunset ? Utils.getTimeString(sunset, GLOBALS.IS_24_HOUR_FORMAT) : 'Never';
 
         this.state = {
             jdate: jdate,
@@ -120,7 +118,7 @@ export default class NewEntry extends React.Component {
                 this.state.ignoreForKavuah,
                 this.state.comments
             );
-        if (entryList.list.find((e) => e.isSameEntry(entry))) {
+        if (EntryList.find((e) => e.isSameEntry(entry))) {
             popUpMessage(
                 `The entry for ${entry.toString()} is already in the list.`,
                 'Entry already exists'
@@ -177,10 +175,10 @@ export default class NewEntry extends React.Component {
                             possibleKavuahList: possList,
                         });
                     } else {
-                        this.dispatch(NavigationActions.back());
+                        this.goBack();
                     }
                 } else {
-                    this.dispatch(NavigationActions.back());
+                    this.goBack();
                 }
             })
             .catch((err) => {
@@ -199,7 +197,7 @@ export default class NewEntry extends React.Component {
         entry.ignoreForKavuah = this.state.ignoreForKavuah;
         entry.comments = this.state.comments;
 
-        if (entryList.list.find((e) => e !== entry && e.isSameEntry(entry))) {
+        if (EntryList.find((e) => e !== entry && e.isSameEntry(entry))) {
             popUpMessage(
                 `The entry for ${entry.toString()} is already in the list.`,
                 'Entry already exists'
@@ -241,10 +239,10 @@ export default class NewEntry extends React.Component {
                             possibleKavuahList: possList,
                         });
                     } else {
-                        this.dispatch(NavigationActions.back());
+                        this.goBack();
                     }
                 } else {
-                    this.dispatch(NavigationActions.back());
+                    this.goBack();
                 }
             })
             .catch((err) => {
@@ -673,7 +671,7 @@ export default class NewEntry extends React.Component {
                                 accessibilityLabel={
                                     this.entry ? 'Save Changes to this Entry' : 'Add this new Entry'
                                 }
-                                color={getGlobals().BUTTON_COLOR}
+                                color={GLOBALS.BUTTON_COLOR}
                             />
                         </View>
                     </ScrollView>

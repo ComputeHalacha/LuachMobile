@@ -3,7 +3,7 @@ import { ScrollView, View, Text, TouchableHighlight } from 'react-native';
 import { Icon } from 'react-native-elements';
 import SideMenu from '../Components/SideMenu';
 import CustomList from '../Components/CustomList';
-import JDate from '../../Code/JCal/jDate';
+import JDate from '../../Code/JCal/JDate';
 import Utils from '../../Code/JCal/Utils';
 import { GeneralStyles } from '../styles';
 

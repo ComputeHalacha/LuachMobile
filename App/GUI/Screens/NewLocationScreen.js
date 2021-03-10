@@ -10,7 +10,6 @@ import {
     Alert,
     Picker,
 } from 'react-native';
-import { NavigationActions } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import SideMenu from '../Components/SideMenu';
 import {
@@ -25,7 +24,7 @@ import {
     error,
     popUpMessage,
     range,
-    getGlobals,
+    GLOBALS,
 } from '../../Code/GeneralUtils';
 import { GeneralStyles } from '../styles';
 
@@ -78,7 +77,7 @@ function deleteLocation(navigation) {
                             if (onUpdate) {
                                 onUpdate(appData, location);
                             }
-                            navigation.dispatch(NavigationActions.back());
+                            navigation.goBack();
                         })
                         .catch(err => {
                             warn(
@@ -124,7 +123,7 @@ export default class NewLocation extends React.Component {
         const navigation = this.props.navigation;
 
         this.navigate = navigation.navigate;
-        this.dispatch = navigation.dispatch;
+        this.goBack = navigation.goBack;
 
         const { location, appData, onUpdate } = navigation.state.params;
 
@@ -194,7 +193,7 @@ export default class NewLocation extends React.Component {
                     }" has been successfully added.`,
                     'Add Location'
                 );
-                this.dispatch(NavigationActions.back());
+                this.goBack();
             })
             .catch(err => {
                 warn('Error trying to add location to the database.');
@@ -236,7 +235,7 @@ export default class NewLocation extends React.Component {
                 if (this.onUpdate) {
                     this.onUpdate(this.appData, location);
                 }
-                this.dispatch(NavigationActions.back());
+                this.goBack();
             })
             .catch(err => {
                 popUpMessage(
@@ -448,7 +447,7 @@ export default class NewLocation extends React.Component {
                                             ? 'Save Changes to '
                                             : 'Add ') + this.state.name
                                     }
-                                    color={getGlobals().BUTTON_COLOR}
+                                    color={GLOBALS.BUTTON_COLOR}
                                 />
                             </View>
                         </View>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ScrollView, Text, View, TouchableHighlight, TouchableOpacity, Alert } from 'react-native';
 import { Icon } from 'react-native-elements';
 import SideMenu from '../Components/SideMenu';
@@ -17,7 +17,7 @@ function getToday(appData) {
     }
     return today;
 }
-export default class OccasionsScreen extends Component {
+export default class OccasionsScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
         const { appData, onUpdate } = navigation.state.params;
         return {

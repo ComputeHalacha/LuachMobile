@@ -5,29 +5,25 @@ import {
     ToastAndroid,
     Alert,
 } from "react-native";
-import RNFS from "react-native-fs";
+import fs from "react-native-fs";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import DeviceInfo from "react-native-device-info";
-import firstTime from "react-native-catch-first-time";
-import { NavigationActions } from 'react-navigation';
+import { HourFormat } from "react-native-hour-format";
+import { NavigationActions } from "react-navigation";
 import { tryToGuessLocation } from "./JCal/Locations";
 import DataUtils from "./Data/DataUtils";
 import RemoteBackup from "./RemoteBackup";
 
-const GLOBAL_FIRST_TIME_RANDOM = "ed92c2efd74740dbb72da04f17ff922b1";
-
-const GLOBALS = Object.freeze({
+export const GLOBALS = Object.freeze({
     VERSION_NAME: DeviceInfo.getReadableVersion().replace(/(.+)\..+/, "$1"),
     IS_IOS: Platform.OS === "ios",
     IS_ANDROID: Platform.OS === "android",
     BUTTON_COLOR: Platform.OS === "android" ? "#99b" : null,
     VALID_PIN: /^\d{4,}$/,
-    DEFAULT_DB_PATH: "~data/luachAndroidDB.sqlite",
-    APP_DATA_FOLDER: RNFS.DocumentDirectoryPath
+    DB_TEMPLATE_PATH: "data/luachDatabaseTemplate.sqlite",
+    DB_WORKING_PATH: fs.DocumentDirectoryPath as string,
+    IS_24_HOUR_FORMAT: HourFormat.is24HourFormat(),
 });
-
-export function getGlobals() {
-    return GLOBALS;
-}
 
 export function popUpMessage(message: string, optionalTitle: string) {
     if (GLOBALS.IS_ANDROID) {
@@ -81,7 +77,7 @@ export function goHomeToday(navigator, appData) {
         index: 0,
         actions: [
             NavigationActions.navigate({
-                routeName: 'Home',
+                routeName: "Home",
                 params: {
                     appData: appData,
                 },
@@ -276,13 +272,33 @@ export function getFileName(filePath: string) {
     return filePath ? filePath.replace(/.+\/(.+)\..+/, "$1") : null;
 }
 
-export function fileExists(filePath: string) {
-    return fs.existsSync(filePath);
+export async function fileExists(filePath: string) {
+    let exists = await fs.exists(filePath);
+    if (!exists && GLOBALS.IS_ANDROID) {
+        exists = await fs.existsAssets(filePath);
+    }
+    return exists;
 }
 
-export function getNewDatabaseName() {
+export async function copyFile(fromPath: string, newPath: string) {
+    try {
+        await fs.copyFile(fromPath, newPath);
+        return true;
+    } catch {
+        if (GLOBALS.IS_ANDROID) {
+            await fs.copyFileAssets(fromPath, newPath);
+            return true;
+        }
+    }
+    return false;
+}
+
+export function getNewDatabaseFullFileName() {
     const d = new Date();
-    return `${d.getDate()}-${d.getMonth()}-${d.getFullYear()}_${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}.sqlite`;
+    // The database file is put in a folder where all os's have access
+    return `${
+        GLOBALS.DB_WORKING_PATH
+    }/Luach-${d.getDate()}-${d.getMonth()}-${d.getFullYear()}_${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}.sqlite`;
 }
 
 /**
@@ -294,24 +310,22 @@ export function deepClone(obj: unknown): unknown {
 }
 
 /**
- * Returns true if this app has never been launched yet.
- * Determined by a Async storage key.
+ * Returns true if this app has never been launched yet on the current device.
+ * Determined by a unique Async storage key for this device.
  */
 export async function isFirstTimeRun() {
-    let isFirstTime = false;
-    try {
-        await firstTime(GLOBAL_FIRST_TIME_RANDOM);
-    } catch (err) {
-        //The weird-ish react-native-catch-first-time package,
-        //calls Promise.reject('Running first time') if this is a first-time launch.
-        isFirstTime = true;
+    const uniqueKey = `LuachDidThis:${DeviceInfo.getUniqueId()}`,
+        isFirstTime = !(await AsyncStorage.getItem(uniqueKey));
+
+    if (isFirstTime) {
+        log("GeneralUtils.isFirstTimeRun(): IsFirstTime is true.");
+        await AsyncStorage.setItem(uniqueKey, "1");
     }
     return isFirstTime;
 }
 
 export async function initFirstRun() {
-    log("GeneralUtils.initFirstRun(): IsFirstRun is true.");
-    DataUtils.assureAppDataFolderExists();
+    log("Starting GeneralUtils.initFirstRun()");
 
     /** *********************************************************************
      * If this is the first time the app was run after a fresh installation,

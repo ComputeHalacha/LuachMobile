@@ -4,14 +4,14 @@ import RNFS from 'react-native-fs';
 import Mailer from 'react-native-mail';
 import SideMenu from '../Components/SideMenu';
 import {
-    getGlobals,
+    GLOBALS,
     popUpMessage,
     log,
     warn,
     error,
 } from '../../Code/GeneralUtils';
 import { NightDay } from '../../Code/Chashavshavon/Onah';
-import jDate from '../../Code/JCal/jDate';
+import jDate from '../../Code/JCal/JDate';
 import Utils from '../../Code/JCal/Utils';
 import { GeneralStyles } from '../styles';
 
@@ -455,7 +455,7 @@ export default class ExportData extends React.Component {
                                 title="Export to Email"
                                 onPress={this.doEmail}
                                 accessibilityLabel="Export to Email"
-                                color={getGlobals().BUTTON_COLOR}
+                                color={GLOBALS.BUTTON_COLOR}
                             />
                         </View>
                     </ScrollView>

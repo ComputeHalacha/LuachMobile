@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Picker, Modal, TouchableOpacity } from 'react-native';
 import Utils from '../../Code/JCal/Utils';
-import jDate from '../../Code/JCal/jDate';
+import jDate from '../../Code/JCal/JDate';
 import { range } from '../../Code/GeneralUtils';
 import { GeneralStyles } from '../styles';
 

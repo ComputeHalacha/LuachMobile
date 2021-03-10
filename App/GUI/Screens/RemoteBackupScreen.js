@@ -3,7 +3,7 @@ import { ScrollView, View, Text, Button, TextInput, Alert } from 'react-native';
 import LocalStorage from '../../Code/Data/LocalStorage';
 import SideMenu from '../Components/SideMenu';
 import {
-    getGlobals,
+    GLOBALS,
     popUpMessage,
     inform,
     isValidDate,
@@ -248,7 +248,7 @@ export default class RemoteBackupScreen extends React.Component {
                                     )
                                 }
                                 accessibilityLabel="Create an Account"
-                                color={getGlobals().BUTTON_COLOR}
+                                color={GLOBALS.BUTTON_COLOR}
                             />
                             <Button
                                 title="Login to Account"
@@ -258,7 +258,7 @@ export default class RemoteBackupScreen extends React.Component {
                                             : inform('Luach could not find your account. Please check your credentials or create a new account.')
                                 }
                                 accessibilityLabel="Login to Account"
-                                color={getGlobals().BUTTON_COLOR}
+                                color={GLOBALS.BUTTON_COLOR}
                             />
                         </View>
                         <View
@@ -305,7 +305,7 @@ export default class RemoteBackupScreen extends React.Component {
                                     title="Restore from Backup"
                                     onPress={this.restoreFromBackup}
                                     accessibilityLabel="Restore from Backup"
-                                    color={getGlobals().BUTTON_COLOR}
+                                    color={GLOBALS.BUTTON_COLOR}
                                 />
                             )}
                             <Button
@@ -319,7 +319,7 @@ export default class RemoteBackupScreen extends React.Component {
                                     this.getLastBackupDate();
                                 }}
                                 accessibilityLabel="Backup My Data"
-                                color={getGlobals().BUTTON_COLOR}
+                                color={GLOBALS.BUTTON_COLOR}
                             />
                         </View>
                     </ScrollView>

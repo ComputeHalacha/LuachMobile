@@ -1,4 +1,8 @@
 rootProject.name = 'LuachMobile'
+include ':react-native-hour-format'
+project(':react-native-hour-format').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-hour-format/android')
+include ':react-native-device-info'
+project(':react-native-device-info').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-device-info/android')
 
 apply from: '../node_modules/react-native-unimodules/gradle.groovy'
 includeUnimodulesProjects()

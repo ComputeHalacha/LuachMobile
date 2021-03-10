@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     ScrollView,
     View,
@@ -15,7 +15,7 @@ import AppData from '../../Code/Data/AppData';
 import { warn, error, popUpMessage } from '../../Code/GeneralUtils';
 import { GeneralStyles } from '../styles';
 
-export default class KavuahScreen extends Component {
+export default class KavuahScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
         const { appData } = navigation.state.params;
         return {

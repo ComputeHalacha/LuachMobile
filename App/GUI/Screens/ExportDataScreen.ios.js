@@ -9,10 +9,10 @@ import {
     log,
     warn,
     error,
-    getGlobals,
+    GLOBALS,
 } from '../../Code/GeneralUtils';
 import { NightDay } from '../../Code/Chashavshavon/Onah';
-import jDate from '../../Code/JCal/jDate';
+import jDate from '../../Code/JCal/JDate';
 import Utils from '../../Code/JCal/Utils';
 import { GeneralStyles } from '../styles';
 
@@ -561,7 +561,7 @@ export default class ExportData extends React.Component {
                                 title="Export to Email"
                                 onPress={this.doEmail}
                                 accessibilityLabel="Export to Email"
-                                color={getGlobals().BUTTON_COLOR}
+                                color={GLOBALS.BUTTON_COLOR}
                             />
                         </View>
                     </ScrollView>

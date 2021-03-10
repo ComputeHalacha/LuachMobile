@@ -7,7 +7,7 @@ import {
     TouchableOpacity,
     Button,
 } from 'react-native';
-import { getGlobals } from '../../Code/GeneralUtils';
+import { GLOBALS } from '../../Code/GeneralUtils';
 import { GeneralStyles } from '../styles';
 
 export default class FirstTimeModal extends React.Component {
@@ -69,7 +69,7 @@ export default class FirstTimeModal extends React.Component {
                                 style={{
                                     fontSize: 11,
                                     color: '#888',
-                                }}>{`Version ${getGlobals().VERSION_NAME}`}</Text>
+                                }}>{`Version ${GLOBALS.VERSION_NAME}`}</Text>
                         </View>
                         <View
                             style={{

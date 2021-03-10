@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     ScrollView,
     Text,
@@ -12,11 +12,11 @@ import SideMenu from '../Components/SideMenu';
 import CustomList from '../Components/CustomList';
 import DataUtils from '../../Code/Data/DataUtils';
 import AppData from '../../Code/Data/AppData';
-import JDate from '../../Code/JCal/jDate';
+import JDate from '../../Code/JCal/JDate';
 import { warn, error, popUpMessage } from '../../Code/GeneralUtils';
 import { GeneralStyles } from '../styles';
 
-export default class EntryScreen extends Component {
+export default class EntryScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
         const { appData } = navigation.state.params;
         return {

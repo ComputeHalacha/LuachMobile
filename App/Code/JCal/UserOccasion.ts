@@ -352,7 +352,7 @@ class UserOccasion {
    * @param {[UserOccasion]} allOccasions
    */
   static getOccasionsForDate(jdate: JDate, allOccasions: Array<UserOccasion>) {
-    return allOccasions.filter(o => {
+    return !!allOccasions && allOccasions.filter(o => {
       const oJDate = o.jdate;
       switch (o.occasionType) {
         case UserOccasionTypes.OneTime:

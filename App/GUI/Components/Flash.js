@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
-import { isSmallScreen, getGlobals } from '../../Code/GeneralUtils';
+import { isSmallScreen, GLOBALS } from '../../Code/GeneralUtils';
 import { GeneralStyles } from '../styles';
 
 export default function Flash() {
@@ -29,7 +29,7 @@ export default function Flash() {
             <Text style={{
                 fontSize: 11,
                 color: '#888'
-            }}>{`Version ${getGlobals().VERSION_NAME}`}</Text>
+            }}>{`Version ${GLOBALS.VERSION_NAME}`}</Text>
         </View>
         <View style={{ flexDirection: isSmallScreen() ? 'row' : 'column' }}>
             <Text style={{

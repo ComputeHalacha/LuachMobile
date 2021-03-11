@@ -38,7 +38,7 @@ export default class SettingsScreen extends React.Component {
         const { appData, onUpdate } = navigation.state.params;
         return {
             title: 'Settings',
-            headerRight: (
+            headerRight: () => (
                 <View
                     style={{
                         flexDirection: 'row',

@@ -20,7 +20,7 @@ export default class FindKavuahScreen extends React.Component {
     constructor(props) {
         super(props);
 
-        this.goBack = navigation.goBack;
+        this.goBack = this.props.navigation.goBack;
         this.navigate = this.props.navigation.navigate;
 
         const {

@@ -20,7 +20,7 @@ export default class KavuahScreen extends React.Component {
         const { appData } = navigation.state.params;
         return {
             title: 'List of Kavuahs',
-            headerRight: (
+            headerRight: () => (
                 <TouchableHighlight
                     onPress={() =>
                         navigation.navigate('ExportData', {

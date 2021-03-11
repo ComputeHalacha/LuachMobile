@@ -874,19 +874,29 @@ export default class DataUtils {
 
         if (await DataUtils.assureDatabaseExists()) {
             const databasePath = await DataUtils.getDatabasePath(),
-                databaseName = databasePath.replace(/.+\//, ""),
+                databaseName = getFileName(databasePath, false) as string,
+                databaseFileName = getFileName(databasePath, true) as string,
                 options = {
-                    name: getFileName(databaseName) as string,
-                    createFromLocation: databaseName,
-                    readonly: false,
+                    name: databaseName,
+                    createFromLocation: databaseFileName,
                     location: "Documents" as SQLite.Location,
                 };
 
             try {
-                database = await SQLite.openDatabase(options);
                 log(
-                    `0120 - database ${DataUtils.databasePath} is open.
-         Starting execution of ${sql} - with values ${values}`
+                    "0119 - Attempting to open database. Options: " +
+                        JSON.stringify(options)
+                );
+                try {
+                    database = await SQLite.openDatabase(options);
+                } catch (e) {
+                    log(`Failed to open ${databaseFileName}. Trying to open ${databasePath}`);
+                    options.createFromLocation = databasePath;
+                    database = await SQLite.openDatabase(options);
+                }
+                log(
+                    `0120 - database ${DataUtils.databasePath} is opening. Options: ${JSON.stringify(options)}
+                    Will be starting execution of ${sql} - with values ${values}`
                 );
                 const results = await database.executeSql(sql, values);
 
@@ -967,7 +977,6 @@ export default class DataUtils {
             return false;
         }
     }
-
 
     static async closeDatabase(db: SQLite.SQLiteDatabase) {
         if (db) {

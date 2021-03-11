@@ -25,7 +25,7 @@ export default class HomeScreen extends React.Component {
         GLOBALS.IS_IOS
             ? {
                   title: "Luach",
-                  headerRight: (
+                  headerRight: () => (
                       <Icon
                           name="calendar"
                           type="octicon"
@@ -116,7 +116,7 @@ export default class HomeScreen extends React.Component {
             clearTimeout(this.flashTimeout);
         }
     }
-    componentWillUpdate(nextProps, nextState) {
+    UNSAFE_componentWillUpdate(nextProps, nextState) {
         /**
          * We will try to prevent re-rendering if the data was not changed.
          */
@@ -145,10 +145,7 @@ export default class HomeScreen extends React.Component {
             log("REFRESHED :( - Occasions were not all the same");
             return true;
         }
-        if (
-            prevAppData.EntryList.length !==
-            newAppData.EntryList.length
-        ) {
+        if (prevAppData.EntryList.length !== newAppData.EntryList.length) {
             log("REFRESHED :( - Entries list were not the same length");
             return true;
         }

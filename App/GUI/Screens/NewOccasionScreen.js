@@ -18,7 +18,7 @@ export default class NewOccasion extends React.Component {
         const { occasion, appData, onUpdate } = navigation.state.params;
         return {
             title: (occasion ? 'Edit' : 'New') + ' Event / Occasion',
-            headerRight: occasion && (
+            headerRight: () => occasion && (
                 <View style={{ flexDirection: 'row' }}>
                     {occasion.occasionType !== UserOccasionTypes.OneTime && (
                         <TouchableOpacity

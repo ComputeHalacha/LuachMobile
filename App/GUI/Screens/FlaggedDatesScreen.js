@@ -14,7 +14,7 @@ export default class FlaggedDatesScreen extends React.Component {
             title: navigation.state.params.jdate
                 ? 'Flagged Dates'
                 : 'Upcoming Flagged Dates',
-            headerRight: (
+            headerRight: () => (
                 <TouchableHighlight
                     onPress={() =>
                         navigation.navigate('ExportData', {

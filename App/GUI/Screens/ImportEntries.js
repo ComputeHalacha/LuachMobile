@@ -21,7 +21,7 @@ export default class EntryScreen extends React.Component {
         const { appData } = navigation.state.params;
         return {
             title: 'List of Entries',
-            headerRight: (
+            headerRight: () => (
                 <TouchableHighlight
                     onPress={() =>
                         navigation.navigate('ExportData', {

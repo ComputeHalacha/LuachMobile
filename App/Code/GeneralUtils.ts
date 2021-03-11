@@ -264,12 +264,16 @@ export function getRandomNumber(length: number): number {
 }
 
 /**
- * Gets just the filename without the path or extension.
+ * Gets just the filename without the path or optionally, without the extension.
  * Returns "test" when supplied with ".../assets/include/blah/folder/test.extension"
  * @param {String} filePath
  */
-export function getFileName(filePath: string) {
-    return filePath ? filePath.replace(/.+\/(.+)\..+/, "$1") : null;
+export function getFileName(
+    filePath: string,
+    includeExtension: boolean = false
+) {
+    const regEx = includeExtension ? /.+\/(.+)/ : /.+\/(.+)\..+/;
+    return filePath ? filePath.replace(regEx, "$1") : null;
 }
 
 export async function fileExists(filePath: string) {

@@ -96,7 +96,7 @@ export default class NewLocation extends React.Component {
         const { location } = navigation.state.params;
         return {
             title: location ? `Edit ${location.Name}` : 'New Location',
-            headerRight: location && (
+            headerRight: () => location && (
                 <TouchableOpacity onPress={() => deleteLocation(navigation)}>
                     <View
                         style={{

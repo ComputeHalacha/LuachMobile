@@ -22,7 +22,7 @@ export default class OccasionsScreen extends React.Component {
         const { appData, onUpdate } = navigation.state.params;
         return {
             title: 'Events / Occasions',
-            headerRight: (
+            headerRight: () => (
                 <View
                     style={{
                         flexDirection: 'row',

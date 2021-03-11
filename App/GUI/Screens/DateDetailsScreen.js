@@ -12,7 +12,7 @@ export default class DateDetailsScreen extends React.PureComponent {
             title:
                 'Zmanim for ' +
                 navigation.state.params.appData.Settings.location.Name,
-            headerRight: (
+            headerRight: () => (
                 <TouchableHighlight
                     onPress={() =>
                         navigation.navigate('ExportData', {

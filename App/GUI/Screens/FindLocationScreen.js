@@ -26,7 +26,7 @@ export default class FindLocation extends React.PureComponent {
         const { appData, onUpdate } = this.props.navigation.state.params;
         this.onUpdate = onUpdate;
         this.appData = appData;
-        this.goBack = navigation.goBack;
+        this.goBack = this.props.navigation.goBack;
         this.navigate = this.props.navigation.navigate;
         this.state = {
             list: null,

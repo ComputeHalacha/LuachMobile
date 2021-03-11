@@ -23,7 +23,7 @@ export default class MonthViewScreen extends React.PureComponent {
         const { jdate, sdate, appData, title } = navigation.state.params;
         return {
             title: title,
-            headerRight: (
+            headerRight: () => (
                 <TouchableHighlight
                     onPress={() =>
                         navigation.navigate('ExportData', {

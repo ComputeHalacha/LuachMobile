@@ -33,7 +33,7 @@ export default class NewEntry extends React.Component {
         const { entry, appData, onUpdate } = navigation.state.params;
         return {
             title: entry ? 'Edit Entry' : 'New Entry',
-            headerRight: entry && (
+            headerRight: () => entry && (
                 <TouchableOpacity
                     onPress={() =>
                         NewEntry.deleteEntry(entry, appData, (ad) => {

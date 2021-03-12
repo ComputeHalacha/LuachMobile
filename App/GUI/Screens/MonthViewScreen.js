@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
     StyleSheet,
     Text,
@@ -6,17 +6,18 @@ import {
     TouchableOpacity,
     Image,
     TouchableHighlight,
-} from 'react-native';
-import { Icon } from 'react-native-elements';
-import GestureRecognizer from 'react-native-swipe-gestures';
-import { getScreenWidth, goHomeToday } from '../../Code/GeneralUtils';
-import { GridView, Row, Column } from '../Components/GridView';
-import jDate from '../../Code/JCal/JDate';
-import Utils from '../../Code/JCal/Utils';
-import Month from '../../Code/Month';
-import { NightDay } from '../../Code/Chashavshavon/Onah';
-import { TaharaEventType } from '../../Code/Chashavshavon/TaharaEvent';
-import { GeneralStyles } from '../styles';
+} from "react-native";
+import { Icon } from "react-native-elements";
+import GestureRecognizer from "react-native-swipe-gestures";
+import { getScreenWidth, goHomeToday } from "../../Code/GeneralUtils";
+import { GridView, Row, Column } from "../Components/GridView";
+import jDate from "../../Code/JCal/JDate";
+import Utils from "../../Code/JCal/Utils";
+import { nowAtLocation } from "../../Code/JCal/JDateUtils";
+import Month from "../../Code/Month";
+import { NightDay } from "../../Code/Chashavshavon/Onah";
+import { TaharaEventType } from "../../Code/Chashavshavon/TaharaEvent";
+import { GeneralStyles } from "../styles";
 
 export default class MonthViewScreen extends React.PureComponent {
     static navigationOptions = ({ navigation }) => {
@@ -26,16 +27,16 @@ export default class MonthViewScreen extends React.PureComponent {
             headerRight: () => (
                 <TouchableHighlight
                     onPress={() =>
-                        navigation.navigate('ExportData', {
+                        navigation.navigate("ExportData", {
                             appData,
                             jdate,
                             sdate: sdate || jdate.sdate,
-                            dataSet: 'Zmanim - ' + title,
+                            dataSet: "Zmanim - " + title,
                         })
                     }>
                     <View style={{ marginRight: 10 }}>
                         <Icon name="import-export" color="#aca" size={25} />
-                        <Text style={{ fontSize: 10, color: '#797' }}>
+                        <Text style={{ fontSize: 10, color: "#797" }}>
                             Export Data
                         </Text>
                     </View>
@@ -54,7 +55,7 @@ export default class MonthViewScreen extends React.PureComponent {
                 : jdate,
             today = appData.Settings.navigateBySecularDate
                 ? new jDate()
-                : Utils.nowAtLocation(appData.Settings.location);
+                : nowAtLocation(appData.Settings.location);
         this.appData = appData;
         this.onUpdate = onUpdate;
         this.israel = this.appData.Settings.location.Israel;
@@ -138,15 +139,15 @@ export default class MonthViewScreen extends React.PureComponent {
         return (
             <View
                 style={{
-                    alignItems: 'center',
+                    alignItems: "center",
                 }}>
                 <Icon
                     size={nightDay === NightDay.Night ? 18 : 22}
                     name={
-                        nightDay === NightDay.Night ? 'ios-moon' : 'ios-sunny'
+                        nightDay === NightDay.Night ? "ios-moon" : "ios-sunny"
                     }
                     type="ionicon"
-                    color={nightDay === NightDay.Night ? '#ffb' : '#ff000030'}
+                    color={nightDay === NightDay.Night ? "#ffb" : "#ff000030"}
                 />
             </View>
         );
@@ -207,24 +208,24 @@ export default class MonthViewScreen extends React.PureComponent {
                 jdate.DayOfWeek === 6 &&
                 jdate
                     .getSedra(this.israel)
-                    .map(s => s.eng)
-                    .join('\n'),
+                    .map((s) => s.eng)
+                    .join("\n"),
             holiday = jdate && jdate.getMajorHoliday(this.israel),
             specialColorDay =
                 singleDay &&
-                ((singleDay.hasEntryDay && '#fdd') ||
-                    (singleDay.hasProbDay && '#ffa')),
+                ((singleDay.hasEntryDay && "#fdd") ||
+                    (singleDay.hasProbDay && "#ffa")),
             specialColorNight =
                 singleDay &&
-                ((singleDay.hasEntryNight && '#fcc') ||
-                    (singleDay.hasProbNight && '#eea'));
+                ((singleDay.hasEntryNight && "#fcc") ||
+                    (singleDay.hasProbNight && "#eea"));
         return (
             <Column size={colWidth} key={index}>
                 {(jdate && (
                     <TouchableOpacity
                         style={styles.singleDay}
                         onPress={() =>
-                            this.navigate('Home', {
+                            this.navigate("Home", {
                                 currDate: jdate,
                                 appData: this.appData,
                             })
@@ -234,11 +235,11 @@ export default class MonthViewScreen extends React.PureComponent {
                                 styles.singleDayView,
                                 {
                                     backgroundColor: singleDay.isHefsekDay
-                                        ? '#f1fff1'
+                                        ? "#f1fff1"
                                         : holiday || shabbos
-                                        ? '#eef'
-                                        : '#fff',
-                                    borderColor: isToday ? '#55f' : '#ddd',
+                                        ? "#eef"
+                                        : "#fff",
+                                    borderColor: isToday ? "#55f" : "#ddd",
                                     borderWidth: isToday ? 2 : 1,
                                     borderRadius: 5,
                                 },
@@ -246,12 +247,12 @@ export default class MonthViewScreen extends React.PureComponent {
                             {specialColorNight && (
                                 <View
                                     style={{
-                                        position: 'absolute',
-                                        height: '100%',
-                                        width: '50%',
+                                        position: "absolute",
+                                        height: "100%",
+                                        width: "50%",
                                         backgroundColor: specialColorNight,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
+                                        alignItems: "center",
+                                        justifyContent: "center",
                                     }}>
                                     {this.getFlag(NightDay.Night)}
                                 </View>
@@ -259,13 +260,13 @@ export default class MonthViewScreen extends React.PureComponent {
                             {specialColorDay && (
                                 <View
                                     style={{
-                                        position: 'absolute',
-                                        height: '100%',
-                                        width: '50%',
-                                        left: '50%',
+                                        position: "absolute",
+                                        height: "100%",
+                                        width: "50%",
+                                        left: "50%",
                                         backgroundColor: specialColorDay,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
+                                        alignItems: "center",
+                                        justifyContent: "center",
                                     }}>
                                     {this.getFlag(NightDay.Day)}
                                 </View>
@@ -286,13 +287,13 @@ export default class MonthViewScreen extends React.PureComponent {
                                     <View
                                         style={{
                                             flex: 1,
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
+                                            alignItems: "center",
+                                            justifyContent: "center",
                                         }}>
                                         <Text
                                             style={{
                                                 fontSize: 9,
-                                                textAlign: 'center',
+                                                textAlign: "center",
                                             }}>
                                             {holiday ? holiday : shabbos}
                                         </Text>
@@ -301,9 +302,9 @@ export default class MonthViewScreen extends React.PureComponent {
                                 <View
                                     style={{
                                         flex: 1,
-                                        flexDirection: 'row',
-                                        alignItems: 'center',
-                                        justifyContent: 'space-around',
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        justifyContent: "space-around",
                                     }}>
                                     {this.appData.Settings
                                         .showEntryFlagOnHome &&
@@ -356,12 +357,12 @@ export default class MonthViewScreen extends React.PureComponent {
                     </Text>
                     <TouchableOpacity onPress={this.toggleMonthType}>
                         <Text style={styles.monthToggle}>
-                            {this.state.month.isJdate ? 'Secular ' : 'Jewish '}
+                            {this.state.month.isJdate ? "Secular " : "Jewish "}
                         </Text>
                     </TouchableOpacity>
                 </View>
                 <GestureRecognizer
-                    style={{ flex: 1, backgroundColor: '#ddd' }}
+                    style={{ flex: 1, backgroundColor: "#ddd" }}
                     config={{
                         velocityThreshold: 0.2,
                         directionalOffsetThreshold: 40,
@@ -407,7 +408,7 @@ export default class MonthViewScreen extends React.PureComponent {
                             <Image
                                 style={{ width: 15, height: 15 }}
                                 resizeMode="stretch"
-                                source={require('../Images/logo.png')}
+                                source={require("../Images/logo.png")}
                             />
                             <Text style={styles.footerBarText}>Today</Text>
                         </View>
@@ -447,9 +448,9 @@ export default class MonthViewScreen extends React.PureComponent {
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() =>
-                            this.navigate('Browser', {
-                                url: 'MonthView.html',
-                                title: 'Month View',
+                            this.navigate("Browser", {
+                                url: "MonthView.html",
+                                title: "Month View",
                                 appData: this.appData,
                                 onUpdate: this.onUpdate,
                             })
@@ -469,20 +470,20 @@ function TaharaEventIcon(props) {
     let color, name;
     switch (props.taharaEvent.taharaEventType) {
         case TaharaEventType.Hefsek:
-            color = '#8c8';
-            name = 'flare';
+            color = "#8c8";
+            name = "flare";
             break;
         case TaharaEventType.Shailah:
-            color = '#f1d484';
-            name = 'report-problem';
+            color = "#f1d484";
+            name = "report-problem";
             break;
         case TaharaEventType.Mikvah:
-            color = '#99f';
-            name = 'beenhere';
+            color = "#99f";
+            name = "beenhere";
             break;
         case TaharaEventType.Bedika:
-            color = '#f5f';
-            name = 'remove-red-eye';
+            color = "#f5f";
+            name = "remove-red-eye";
             break;
     }
     return <Icon color={color} name={name} size={18} />;
@@ -490,18 +491,18 @@ function TaharaEventIcon(props) {
 
 const styles = StyleSheet.create({
     headerView: {
-        backgroundColor: '#99e',
+        backgroundColor: "#99e",
         flex: 0,
-        alignItems: 'center',
-        justifyContent: 'space-between',
+        alignItems: "center",
+        justifyContent: "space-between",
         paddingTop: 5,
         paddingBottom: 10,
-        flexDirection: 'row',
+        flexDirection: "row",
     },
     headerText: {
-        color: '#eef',
-        textAlign: 'center',
-        fontWeight: 'bold',
+        color: "#eef",
+        textAlign: "center",
+        fontWeight: "bold",
         fontSize: 18,
         paddingLeft: 10,
     },
@@ -509,59 +510,59 @@ const styles = StyleSheet.create({
         fontSize: 11,
         padding: 5,
         marginRight: 10,
-        backgroundColor: '#aaf',
-        color: '#00f',
+        backgroundColor: "#aaf",
+        color: "#00f",
         borderRadius: 6,
     },
     dayHeadView: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#999',
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#999",
         borderWidth: 1,
-        borderColor: '#aaa',
+        borderColor: "#aaa",
     },
     dayHead: {
-        textAlign: 'center',
-        color: '#eef',
+        textAlign: "center",
+        color: "#eef",
     },
     singleDay: {
         flex: 1,
     },
     singleDayBlank: {
         flex: 1,
-        backgroundColor: '#eee',
+        backgroundColor: "#eee",
         borderWidth: 1,
-        borderColor: '#ddd',
+        borderColor: "#ddd",
     },
     singleDayTextContent: {
-        position: 'absolute',
+        position: "absolute",
         padding: 6,
-        backgroundColor: 'rgba(0,0,0,0)',
-        width: '100%',
-        height: '100%',
+        backgroundColor: "rgba(0,0,0,0)",
+        width: "100%",
+        height: "100%",
     },
     singleDayView: {
         flex: 1,
         borderWidth: 1,
-        width: '100%',
-        height: '100%',
+        width: "100%",
+        height: "100%",
     },
     singleDayNumbersView: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flexDirection: "row",
+        justifyContent: "space-between",
     },
-    jdate: { fontSize: 11, fontWeight: 'bold', color: '#008' },
-    sdate: { fontSize: 11, color: '#080' },
+    jdate: { fontSize: 11, fontWeight: "bold", color: "#008" },
+    sdate: { fontSize: 11, color: "#080" },
     footerBar: {
         flex: 0,
-        flexDirection: 'row',
-        alignItems: 'center',
-        borderColor: '#777',
+        flexDirection: "row",
+        alignItems: "center",
+        borderColor: "#777",
         padding: 0,
         margin: 0,
         borderTopWidth: 1,
-        width: '100%',
+        width: "100%",
         height: 42,
     },
     footerButton: {
@@ -569,43 +570,43 @@ const styles = StyleSheet.create({
     },
     footerView: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderColor: '#888',
-        backgroundColor: '#666',
+        alignItems: "center",
+        justifyContent: "center",
+        borderColor: "#888",
+        backgroundColor: "#666",
         paddingTop: 5,
         paddingBottom: 5,
         borderRightWidth: 1,
     },
     todayView: {
         flex: 0,
-        width: '10%',
+        width: "10%",
         minWidth: 50,
-        height: '100%',
+        height: "100%",
         borderRightWidth: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderColor: '#888',
-        backgroundColor: '#666',
+        alignItems: "center",
+        justifyContent: "center",
+        borderColor: "#888",
+        backgroundColor: "#666",
         paddingTop: 5,
         paddingBottom: 5,
     },
     helpView: {
         flex: 0,
         width: 30,
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#666',
+        height: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#666",
     },
     footerBarText: {
         fontSize: 10,
-        color: '#eee',
-        textAlign: 'center',
-        flexWrap: 'wrap',
+        color: "#eee",
+        textAlign: "center",
+        flexWrap: "wrap",
     },
     footerIcon: {
         fontSize: 20,
-        color: '#eee',
+        color: "#eee",
     },
 });

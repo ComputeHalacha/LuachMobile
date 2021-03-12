@@ -1,3 +1,4 @@
+import { Time } from 'luach-types';
 import JDate from './JDate';
 
 export default class Utils {
@@ -211,12 +212,12 @@ export default class Utils {
    * Makes sure hour is between 0 and 23 and minute is between 0 and 59.
    * Overlaps get added/subtracted.
    * The argument needs to be an object in the format {hour : 12, minute :42 }
-   * @param {{hour:Number, minute:Number}} hm
+   * @param {Time} hm
    */
-  static fixHourMinute(hm: { hour: number; minute: number }) {
+  static fixHourMinute(hm: Time) {
     if (!hm)
       throw new Error(
-        'Utils.fixHourMinute - hm is not an object of type {hour:Number, minute:Number}'
+        'Utils.fixHourMinute - hm is not an object of type Time'
       );
     // make a copy - javascript sends object parameters by reference
     const result = { hour: hm.hour, minute: hm.minute };
@@ -241,13 +242,13 @@ export default class Utils {
    * Add the given number of minutes to the given time.
    * The argument needs to be an object in the format {hour : 12, minute :42 }
    *
-   * @param {{hour:Number, minute:Number}} hm
+   * @param {Time} hm
    * @param {Number} minutes
    */
-  static addMinutes(hm: { hour: number; minute: number }, minutes: number) {
+  static addMinutes(hm: Time, minutes: number) {
     if (!hm)
       throw new Error(
-        'Utils.addMinutes - hm is not an object of type {hour:Number, minute:Number}'
+        'Utils.addMinutes - hm is not an object of type Time'
       );
     return Utils.fixHourMinute({
       hour: hm.hour,
@@ -258,12 +259,12 @@ export default class Utils {
   /**
    * Gets the time difference between two times of day.
    * Both arguments need to be an object in the format {hour : 12, minute :42 }
-   * @param {{hour:Number, minute:Number}} time1
-   * @param {{hour:Number, minute:Number}} time2
+   * @param {Time} time1
+   * @param {Time} time2
    */
   static timeDiff(
-    time1: { hour: number; minute: number },
-    time2: { hour: number; minute: number }
+    time1: Time,
+    time2: Time
   ) {
     return Utils.fixHourMinute(
       Utils.addMinutes(time1, Utils.totalMinutes(time2))
@@ -272,26 +273,26 @@ export default class Utils {
 
   /**
    * Gets the total number of minutes in the given time.
-   * @param {{hour:Number, minute:Number}} time An object in the format {hour : 12, minute :42 }
+   * @param {Time} time An object in the format {hour : 12, minute :42 }
    */
-  static totalMinutes(time: { hour: number; minute: number }) {
+  static totalMinutes(time: Time) {
     return time.hour * 60 + time.minute;
   }
 
   /**
    * Returns the given time in a formatted string.     *
-   * @param {{hour:Number, minute:Number}} hm An object in the format {hour : 23, minute :42 }
+   * @param {Time} hm An object in the format {hour : 23, minute :42 }
    * @param {Boolean} army If falsey, the returned string will be: 11:42 PM otherwise it will be 23:42
    * @param {Boolean} roundUp If falsey, the numbers will converted to a whole number by rounding down, otherwise, up.
    */
   static getTimeString(
-    hm: { hour: number; minute: number },
+    hm: Time,
     army = false,
     roundUp = false
   ) {
     if (!hm)
       throw new Error(
-        'Utils.getTimeString - hm is not an object of type {hour:Number, minute:Number}'
+        'Utils.getTimeString - hm is not an object of type Time'
       );
     const round = roundUp ? Math.ceil : Math.floor;
     const hourMinute = { hour: round(hm.hour), minute: round(hm.minute) };
@@ -315,18 +316,15 @@ export default class Utils {
 
   /**
    * Returns the given time in a simple formatted string: 17:06:00
-   * @param {{hour:Number, minute:Number}} hm An object in the format {hour : 23, minute :42 }
+   * @param {Time} hm An object in the format {hour : 23, minute :42 }
    */
-  static getSimpleTimeString(hm?: {
-    hour: number;
-    minute: number;
-  }): string | null {
+  static getSimpleTimeString(hm?:Time): string | null {
     if (!hm) {
       return null;
     }
     if (hm.hour < 0)
       throw new Error(
-        'Utils.getSimpleTimeString - hm is not an object of type {hour:Number, minute:Number}'
+        'Utils.getSimpleTimeString - hm is not an object of type Time'
       );
     return `${hm.hour < 10 ? '0' : ''}${hm.hour}:${hm.minute < 10 ? '0' : ''}${
       hm.minute
@@ -530,12 +528,12 @@ export default class Utils {
 
   /**
    * Compares two time objects.
-   * @param {{hour:Number, minute:Number}} time1
-   * @param {{hour:Number, minute:Number}} time2
+   * @param {Time} time1
+   * @param {Time} time2
    */
   static isSameTime(
-    time1: { hour: number; minute: number } | null,
-    time2: { hour: number; minute: number } | null
+    time1: Time | null,
+    time2: Time | null
   ) {
     return (
       time1 &&

@@ -18,7 +18,7 @@ export default class Zmanim {
    * Gets sunrise and sunset time for given date and Location.
    * Accepts a javascript Date object, a string for creating a javascript date object or a JDate object.
    * Location object is required.
-   * @returns {{sunrise:{hour:Number, minute:Number},sunset:{hour:Number, minute:Number}}
+   * @returns {{sunrise:Time,sunset:Time}
    * @param {Date | JDate} date A Javascript Date or Jewish Date for which to calculate the sun times.
    * @param {Location} location Where on the globe to calculate the sun times for.
    * @param {Boolean} considerElevation

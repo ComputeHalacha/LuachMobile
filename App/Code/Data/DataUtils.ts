@@ -639,17 +639,17 @@ export default class DataUtils {
         entry: Entry
     ): Promise<Entry> {
         const ent = entry;
-        if (entry.hasId) {
+        if (ent.hasId) {
             try {
                 await DataUtils.executeSql(
                     "UPDATE entries SET dateAbs=?, day=?, ignoreForFlaggedDates=?, ignoreForKavuah=?, comments=? WHERE entryId=?",
                     [
-                        entry.date.Abs,
-                        entry.nightDay === NightDay.Day,
-                        entry.ignoreForFlaggedDates,
-                        entry.ignoreForKavuah,
-                        entry.comments,
-                        entry.entryId,
+                        ent.date.Abs,
+                        ent.nightDay === NightDay.Day,
+                        ent.ignoreForFlaggedDates,
+                        ent.ignoreForKavuah,
+                        ent.comments,
+                        ent.entryId,
                     ]
                 );
                 log(`Updated Entry Id ${entry.entryId.toString()}`);
@@ -667,11 +667,11 @@ export default class DataUtils {
                 const results = await DataUtils.executeSql(
                     "INSERT INTO entries (dateAbs, day, ignoreForFlaggedDates, ignoreForKavuah, comments) VALUES (?, ?, ?, ?, ?)",
                     [
-                        entry.date.Abs,
-                        entry.nightDay === NightDay.Day,
-                        entry.ignoreForFlaggedDates,
-                        entry.ignoreForKavuah,
-                        entry.comments,
+                        ent.date.Abs,
+                        ent.nightDay === NightDay.Day,
+                        ent.ignoreForFlaggedDates,
+                        ent.ignoreForKavuah,
+                        ent.comments,
                     ]
                 );
                 ent.entryId = results.id;

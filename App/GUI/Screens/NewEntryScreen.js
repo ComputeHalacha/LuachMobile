@@ -19,6 +19,7 @@ import Entry from '../../Code/Chashavshavon/Entry';
 import { Kavuah } from '../../Code/Chashavshavon/Kavuah';
 import Utils from '../../Code/JCal/Utils';
 import jDate from '../../Code/JCal/JDate';
+import {isAfterSunset} from '../../Code/JCal/JDateUtils';
 import { NightDay, Onah } from '../../Code/Chashavshavon/Onah';
 import DataUtils from '../../Code/Data/DataUtils';
 import {GLOBALS, warn, error, popUpMessage, inform } from '../../Code/GeneralUtils';
@@ -83,7 +84,7 @@ export default class NewEntry extends React.Component {
             isNight = entry.nightDay === NightDay.Night;
         } else {
             jdate = navigation.state.params.jdate;
-            isNight = Utils.isAfterSunset(new Date(), this.location);
+            isNight = isAfterSunset(new Date(), this.location);
         }
 
         const { sunrise, sunset } = jdate.getSunriseSunset(this.location);
@@ -118,14 +119,14 @@ export default class NewEntry extends React.Component {
                 this.state.ignoreForKavuah,
                 this.state.comments
             );
-        if (EntryList.find((e) => e.isSameEntry(entry))) {
+        if (entryList.find((e) => e.isSameEntry(entry))) {
             popUpMessage(
                 `The entry for ${entry.toString()} is already in the list.`,
                 'Entry already exists'
             );
             return;
         }
-        DataUtils.EntryToDatabase(entry)
+        DataUtils.EntryToDatabase(appData, entry)
             .then(async () => {
                 appData.EntryList = entryList;
                 popUpMessage(
@@ -204,7 +205,7 @@ export default class NewEntry extends React.Component {
             );
             return;
         }
-        DataUtils.EntryToDatabase(entry)
+        DataUtils.EntryToDatabase(appData, entry)
             .then(() => {
                 if (this.onUpdate) {
                     this.onUpdate(appData);

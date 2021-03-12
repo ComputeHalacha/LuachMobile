@@ -13,6 +13,7 @@ import {
 import { NightDay } from '../../Code/Chashavshavon/Onah';
 import jDate from '../../Code/JCal/JDate';
 import Utils from '../../Code/JCal/Utils';
+import {nowAtLocation} from '../../Code/JCal/JDateUtils';
 import { GeneralStyles } from '../styles';
 
 const exportPath = RNFS.ExternalDirectoryPath;
@@ -29,7 +30,7 @@ export default class ExportData extends React.Component {
 
         this.appData = appData;
         this.jdate =
-            jdate || Utils.nowAtLocation(this.appData.Settings.location);
+            jdate || nowAtLocation(this.appData.Settings.location);
         this.sdate = sdate || this.jdate.getDate();
         this.sdateString =
             Utils.sMonthsEng[this.sdate.getMonth()] +

@@ -8,11 +8,13 @@ import {
 import fs from "react-native-fs";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import DeviceInfo from "react-native-device-info";
-import { HourFormat } from "react-native-hour-format";
-import { NavigationActions } from "react-navigation";
+import {uses24HourClock} from "react-native-localize";
+import { NavigationActions, StackActions } from 'react-navigation';
 import { tryToGuessLocation } from "./JCal/Locations";
 import DataUtils from "./Data/DataUtils";
 import RemoteBackup from "./RemoteBackup";
+import AppData from './Data/AppData';
+import { StackNavigationProp } from "react-navigation-stack/lib/typescript/src/vendor/types";
 
 export const GLOBALS = Object.freeze({
     VERSION_NAME: DeviceInfo.getReadableVersion().replace(/(.+)\..+/, "$1"),
@@ -22,7 +24,7 @@ export const GLOBALS = Object.freeze({
     VALID_PIN: /^\d{4,}$/,
     DB_TEMPLATE_PATH: "data/luachDatabaseTemplate.sqlite",
     DB_WORKING_PATH: fs.DocumentDirectoryPath as string,
-    IS_24_HOUR_FORMAT: HourFormat.is24HourFormat(),
+    IS_24_HOUR_FORMAT: uses24HourClock(),
 });
 
 export function popUpMessage(message: string, optionalTitle: string) {
@@ -72,8 +74,8 @@ export async function inform(message: string, title: string) {
  * @param {Navigator} dispatcher
  * @param {AppData} appData
  */
-export function goHomeToday(navigator, appData) {
-    const resetAction = NavigationActions.reset({
+export function goHomeToday(navigator:StackNavigationProp, appData:AppData) {
+    const resetAction = StackActions.reset({
         index: 0,
         actions: [
             NavigationActions.navigate({

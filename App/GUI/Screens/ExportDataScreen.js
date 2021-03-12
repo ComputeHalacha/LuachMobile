@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text, Button, Picker } from 'react-native';
-import RNFS from 'react-native-fs';
+import fs from 'react-native-fs';
 import Mailer from 'react-native-mail';
 import SideMenu from '../Components/SideMenu';
 import {
@@ -13,9 +13,10 @@ import {
 import { NightDay } from '../../Code/Chashavshavon/Onah';
 import jDate from '../../Code/JCal/JDate';
 import Utils from '../../Code/JCal/Utils';
+import {nowAtLocation} from '../../Code/JCal/JDateUtils';
 import { GeneralStyles } from '../styles';
 
-const exportPath = RNFS.ExternalDirectoryPath;
+const exportPath = fs.ExternalDirectoryPath;
 
 export default class ExportData extends React.Component {
     static navigationOptions = {
@@ -29,7 +30,7 @@ export default class ExportData extends React.Component {
 
         this.appData = appData;
         this.jdate =
-            jdate || Utils.nowAtLocation(this.appData.Settings.location);
+            jdate || nowAtLocation(this.appData.Settings.location);
         this.sdate = sdate || this.jdate.getDate();
         this.sdateString =
             Utils.sMonthsEng[this.sdate.getMonth()] +
@@ -329,7 +330,7 @@ export default class ExportData extends React.Component {
         const filePath = `${exportPath}/${this.getFileName()}`,
             csv = this.getCsvText();
         log(csv);
-        await RNFS.writeFile(filePath, csv).catch(err => {
+        await fs.writeFile(filePath, csv).catch(err => {
             warn('Error trying to create ' + filePath);
             error(err);
         });

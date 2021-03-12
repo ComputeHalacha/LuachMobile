@@ -23,6 +23,4 @@ target 'LuachMobile' do
   #  end
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
 
-  pod 'RNHourFormat', :path => '../node_modules/react-native-hour-format'
-
 end

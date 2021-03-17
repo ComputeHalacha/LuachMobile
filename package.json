@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.4",
-    "@react-native-community/datetimepicker": "^3.0.9",
+    "@react-native-community/datetimepicker": "^3.2.0",
     "@react-native-community/masked-view": "0.1.10",
     "@react-native-community/push-notification-ios": "^1.8.0",
     "@react-navigation/native": "^5.9.3",
@@ -29,7 +29,7 @@
     "react-native-gesture-handler": "~1.8.0",
     "react-native-localize": "^2.0.2",
     "react-native-mail": "^6.0.0",
-    "react-native-modal-datetime-picker": "^9.1.0",
+    "react-native-modal-datetime-picker": "^9.2.0",
     "react-native-modal-selector": "^2.0.3",
     "react-native-push-notification": "^7.2.0",
     "react-native-reanimated": "~1.13.0",

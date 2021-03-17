@@ -123,8 +123,8 @@ export default class Settings {
     this.hideHelp = !!args?.hideHelp;
     // If a reminders field is null, we won't show the reminders
     this.remindBedkMornTime =
-      args && args.remindBedkAftrnHour
-        ? Utils.fromSimpleTimeString(args.remindBedkMornTime as string)
+      args && args.remindBedkMornTime
+        ? Utils.fromSimpleTimeString(args.remindBedkMornTime)
         : undefined;
     this.remindBedkAftrnHour = args?.remindBedkAftrnHour;
     this.remindMikvahTime =

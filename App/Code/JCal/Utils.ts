@@ -212,15 +212,15 @@ export default class Utils {
    * Makes sure hour is between 0 and 23 and minute is between 0 and 59.
    * Overlaps get added/subtracted.
    * The argument needs to be an object in the format {hour : 12, minute :42 }
-   * @param {Time} hm
+   * @param {Time} time
    */
-  static fixHourMinute(hm: Time) {
-    if (!hm)
+  static fixTime(time: Time) {
+    if (!time)
       throw new Error(
-        'Utils.fixHourMinute - hm is not an object of type Time'
+        'Utils.fixTime - time is not an object of type Time'
       );
     // make a copy - javascript sends object parameters by reference
-    const result = { hour: hm.hour, minute: hm.minute };
+    const result = { hour: time.hour, minute: time.minute };
     while (result.minute < 0) {
       result.minute += 60;
       result.hour--;
@@ -242,17 +242,17 @@ export default class Utils {
    * Add the given number of minutes to the given time.
    * The argument needs to be an object in the format {hour : 12, minute :42 }
    *
-   * @param {Time} hm
+   * @param {Time} time
    * @param {Number} minutes
    */
-  static addMinutes(hm: Time, minutes: number) {
-    if (!hm)
+  static addMinutes(time: Time, minutes: number) {
+    if (!time)
       throw new Error(
-        'Utils.addMinutes - hm is not an object of type Time'
+        'Utils.addMinutes - time is not an object of type Time'
       );
-    return Utils.fixHourMinute({
-      hour: hm.hour,
-      minute: hm.minute + minutes
+    return Utils.fixTime({
+      hour: time.hour,
+      minute: time.minute + minutes
     });
   }
 
@@ -266,7 +266,7 @@ export default class Utils {
     time1: Time,
     time2: Time
   ) {
-    return Utils.fixHourMinute(
+    return Utils.fixTime(
       Utils.addMinutes(time1, Utils.totalMinutes(time2))
     );
   }
@@ -281,21 +281,21 @@ export default class Utils {
 
   /**
    * Returns the given time in a formatted string.     *
-   * @param {Time} hm An object in the format {hour : 23, minute :42 }
+   * @param {Time} time An object in the format {hour : 23, minute :42 }
    * @param {Boolean} army If falsey, the returned string will be: 11:42 PM otherwise it will be 23:42
    * @param {Boolean} roundUp If falsey, the numbers will converted to a whole number by rounding down, otherwise, up.
    */
   static getTimeString(
-    hm: Time,
+    time: Time,
     army = false,
     roundUp = false
   ) {
-    if (!hm)
+    if (!time)
       throw new Error(
-        'Utils.getTimeString - hm is not an object of type Time'
+        'Utils.getTimeString - time is not an object of type Time'
       );
     const round = roundUp ? Math.ceil : Math.floor;
-    const hourMinute = { hour: round(hm.hour), minute: round(hm.minute) };
+    const hourMinute = { hour: round(time.hour), minute: round(time.minute) };
     if (army) {
       return `${hourMinute.hour.toString()}:${
         hourMinute.minute < 10
@@ -316,18 +316,18 @@ export default class Utils {
 
   /**
    * Returns the given time in a simple formatted string: 17:06:00
-   * @param {Time} hm An object in the format {hour : 23, minute :42 }
+   * @param {Time} time An object in the format {hour : 23, minute :42 }
    */
-  static getSimpleTimeString(hm?:Time): string | null {
-    if (!hm) {
+  static getSimpleTimeString(time?:Time): string | null {
+    if (!time) {
       return null;
     }
-    if (hm.hour < 0)
+    if (time.hour < 0)
       throw new Error(
-        'Utils.getSimpleTimeString - hm is not an object of type Time'
+        'Utils.getSimpleTimeString - time is not an object of type Time'
       );
-    return `${hm.hour < 10 ? '0' : ''}${hm.hour}:${hm.minute < 10 ? '0' : ''}${
-      hm.minute
+    return `${time.hour < 10 ? '0' : ''}${time.hour}:${time.minute < 10 ? '0' : ''}${
+      time.minute
     }:00`;
   }
 

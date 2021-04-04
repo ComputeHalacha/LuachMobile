@@ -2,11 +2,7 @@ import Utils from './Utils';
 import JDate from './JDate';
 import { isValidDate } from '../GeneralUtils';
 import Location from './Location';
-
-export interface HourMinute {
-  hour: number;
-  minute: number;
-}
+import {Time} from 'luach-types';
 
 /**
  * Computes the daily Zmanim for any single date at any location.
@@ -18,7 +14,7 @@ export default class Zmanim {
    * Gets sunrise and sunset time for given date and Location.
    * Accepts a javascript Date object, a string for creating a javascript date object or a JDate object.
    * Location object is required.
-   * @returns {{sunrise:Time,sunset:Time}
+   * @returns {Time}
    * @param {Date | JDate} date A Javascript Date or Jewish Date for which to calculate the sun times.
    * @param {Location} location Where on the globe to calculate the sun times for.
    * @param {Boolean} considerElevation
@@ -41,8 +37,8 @@ export default class Zmanim {
 
     const day = Zmanim.dayOfYear(sdate),
       earthRadius = 6356900;
-    let sunrise: HourMinute = { hour: -1, minute: -1 },
-      sunset: HourMinute = { hour: -1, minute: -1 },
+    let sunrise: Time = { hour: -1, minute: -1 },
+      sunset: Time = { hour: -1, minute: -1 },
       zenithDeg = 90,
       zenithMin = 50,
       lonHour = 0,
@@ -137,11 +133,11 @@ export default class Zmanim {
   }
 
   static getChatzosFromSuntimes(sunTimes: {
-    sunrise: HourMinute;
-    sunset: HourMinute;
+    sunrise: Time;
+    sunset: Time;
   }) {
-    const rise: HourMinute = sunTimes.sunrise,
-      set: HourMinute = sunTimes.sunset;
+    const rise: Time = sunTimes.sunrise,
+      set: Time = sunTimes.sunset;
 
     if (Number.isNaN(rise.hour) || Number.isNaN(set.hour)) {
       return { hour: NaN, minute: NaN };
@@ -162,7 +158,7 @@ export default class Zmanim {
   }
 
   static getShaaZmanisFromSunTimes(
-    sunTimes: { sunrise: HourMinute; sunset: HourMinute },
+    sunTimes: { sunrise: Time; sunset: Time },
     offset?: number | undefined
   ) {
     let rise = sunTimes.sunrise,
@@ -182,8 +178,8 @@ export default class Zmanim {
 
   static getShaaZmanisMga(
     sunTimes: {
-      sunrise: HourMinute;
-      sunset: HourMinute;
+      sunrise: Time;
+      sunset: Time;
     },
     israel: boolean
   ) {
@@ -199,8 +195,8 @@ export default class Zmanim {
 
   static getCandleLightingFromSunTimes(
     sunTimes: {
-      sunrise?: HourMinute | undefined;
-      sunset: HourMinute;
+      sunrise?: Time | undefined;
+      sunset: Time;
     },
     location: Location
   ) {
@@ -255,6 +251,6 @@ export default class Zmanim {
       hour++;
     }
 
-    return Utils.fixHourMinute({ hour, minute: min });
+    return Utils.fixTime({ hour, minute: min });
   }
 }

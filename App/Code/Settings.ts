@@ -2,11 +2,7 @@ import Location from './JCal/Location';
 import { setDefault } from './GeneralUtils';
 import DataUtils from './Data/DataUtils';
 import Utils from './JCal/Utils';
-
-interface Time {
-  hour: number;
-  minute: number;
-}
+import {Time} from 'luach-types';
 
 export default class Settings {
   location: Location;
